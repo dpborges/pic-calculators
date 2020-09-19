@@ -1,0 +1,27 @@
+# pull official base image
+FROM node:alpine
+
+# set working directory on container; if does not exist docker will create it
+WORKDIR '/app'
+
+# add node_modules/.bin to PATH env
+# ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install 
+RUN npm install react-scripts
+
+#copy local project directory to container working directory /app
+COPY . ./
+
+# port 35729 is used by CRA to support web page reloading as soon as a local file changes
+# also port 3000 for react dev server. Be sure to map these ports in your docker run command
+EXPOSE 3000
+EXPOSE 35729
+
+# start app
+CMD ["npm", "start"]
+
+
