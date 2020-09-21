@@ -1,10 +1,12 @@
 import React from  'react';
 import styled from 'styled-components';
-import { Color, Fontsize } from '../components/Styles/Settings';
+import GlobalStyle from '../components/Styles/GlobalStyles';
+
 
 export default function EventPlanningCalculators() {
     return (
         <CalcPageContainer>
+          <GlobalStyle />
           <MainTitle>This is H1</MainTitle>
           <MainSubtitle>This is H2</MainSubtitle>
           <h3>This is H3</h3>

@@ -5,10 +5,8 @@
 // **************************************************************************
 import {createGlobalStyle} from "styled-components";
 import {normalize} from 'styled-normalize';
-import {Color} from "./Settings";
-import { Theme, theme } from "./Theme";
+import { theme } from "./theme";
 
-// Note theme (NOT Theme) is the object defined within the our Theme provider
 // This is only place theme is used. The reason is because GlobalStyle is a template string and not a React Component.
 // In order to set defaults in Global styles for fontFamily and background color, we need to access the object directly
 // versus wrapping a component with our Theme provider component (which is not possible in this case).
@@ -24,14 +22,14 @@ const GlobalStyle = createGlobalStyle`
     }
         
     body {
-        color:  ${Color.black};
+        color:  ${theme.colors.black};
         background-color: lightgray;
     }
 
     html {
        font-size: 62.5%;
-       ${theme.fontFamily.primary};
-      
+       ${theme.fontFamily.secondary};
+          
        background:${theme.colors.white};
        
        h1{ font-size: 4.8rem; }

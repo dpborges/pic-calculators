@@ -1,5 +1,4 @@
-import React from 'react';
-import { css, ThemeProvider } from 'styled-components';
+import { css } from 'styled-components';
 
 // The main export of ths file is the Theme component wrapping ThemeProvider.
 // The export below is strictly for use by Global Styles to set default font-family.
@@ -19,7 +18,7 @@ export const theme = {
         white:      "#ffffff"
     },
     fontFamily: {
-        primary:   css`font-family: 'Lato', 'Roboto', 'Arial', 'sans-serif'`,
+        primary:   css`font-family: 'Lato', 'Avenir', 'Adobe Heiti Std', 'Segoe UI', 'Trebuchet MS', 'sans-serif'`,
         secondary: css`font-family: 'Roboto', 'Lato', 'Arial', 'sans-serif'`,
         tertiary:  css`font-family: 'Montserrat', 'Lato', 'Arial', 'sans-serif'`
     },
@@ -33,7 +32,5 @@ export const theme = {
     }
 };
 
-export const Theme = ({ children }) => (
-   <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
+
 
