@@ -1,6 +1,6 @@
 import React from  'react';
 import styled from 'styled-components';
-import GlobalStyle from '../components/Styles/GlobalStyles';
+import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
 
 
 export default function EventPlanningCalculators() {
@@ -28,6 +28,10 @@ const CalcPageContainer = styled.div `
 
 const MainTitle = styled.h1 `
     color: ${props => props.theme.colors.orange};
+
+    ${mediaQuery.greaterThan("desktop")`
+        color: blue;
+    `}
 `;
 
 const MainSubtitle = styled.h2 `

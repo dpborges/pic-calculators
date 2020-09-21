@@ -1,17 +1,24 @@
 // **************************************************************************
 // This file is used to define global styles across your application.
 // Add the GlobalStyle component to the root of your application (eg. App.js)
-// Note, the styled-normalize component is based off normalize.css
+// In this file we 
+//  - add the styled-normalize component at the top. This is based off normalize.css
+//  - set fontsize to 62.5%. Based on browser default that 1rem = 16px, the 62.5%
+//    results in setting 1rem to 10 px.
+//  - import our custom media defintion and export it as mediaQuery.  This allows us 
+//    to import both GlobaStyle and mediaQuery from one line our various components,
+//    from this file.
 // **************************************************************************
 import {createGlobalStyle} from "styled-components";
 import {normalize} from 'styled-normalize';
 import { theme } from "./theme";
+import customMediaQuery from "./MediaQuery";  // This set up styled-media-query, which is exported at bottom of file
 
-// This is only place theme is used. The reason is because GlobalStyle is a template string and not a React Component.
-// In order to set defaults in Global styles for fontFamily and background color, we need to access the object directly
-// versus wrapping a component with our Theme provider component (which is not possible in this case).
-
-const GlobalStyle = createGlobalStyle`
+// Note the reason we're using the theme object directly (instead of props.theme.value) is because 
+// GlobalStyle is a template string nd not a React Component. In order to set defaults in Global 
+// styles for fontFamily and background color, we need to access the object directly versus wrapping 
+// a component with our Theme provider component (which is not possible in this case).
+export const GlobalStyle = createGlobalStyle`
     
     ${normalize}
 
@@ -27,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-       font-size: 62.5%;
+       font-size: 62.5%;   
        ${theme.fontFamily.secondary};
           
        background:${theme.colors.white};
@@ -50,4 +57,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
 `;
-export default GlobalStyle;
+
+export const mediaQuery = customMediaQuery;
+
