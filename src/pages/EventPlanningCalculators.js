@@ -1,44 +1,45 @@
 import React from  'react';
 import styled from 'styled-components';
-import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
+// import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
+import { css } from 'styled-components';
+import { mediaQuery }  from '../components/Styles/GlobalStyles';
+import Page from '../components/common/Page';
+import PageHeader from '../components/common/PageHeader';
 
+export default function EventPlanningCalculators(props) {
 
-export default function EventPlanningCalculators() {
+  console.log("This is props ", JSON.stringify(props,null,2))
+
+   let fgcolor = props.theme.colors.orange;
+   let bgcolor = props.theme.colors.orange;
+
     return (
-        <CalcPageContainer>
-          <GlobalStyle />
-          <MainTitle>This is H1</MainTitle>
-          <MainSubtitle>This is H2</MainSubtitle>
-          <h3>This is H3</h3>
-          <h4>This is H4</h4>
-          <h5>This is H5</h5>
-          <h6>This is H6</h6>
-          <div>This is calculator page </div>
-          <Para>This is paragraph</Para>
-        </CalcPageContainer>
+      <Page>
+        <PageHeader fgcolor={fgcolor} bgcolor={bgcolor} />
+      </Page>
     )
 }
 
-const CalcPageContainer = styled.div `
-    color: ${props => props.theme.colors.primary};
-    font-size: ${props => props.theme.fontSizes.xxlarge};
-    ${props => props.theme.fontSizes.xxlarge};
-    border: 2px solid black;
-`;
+// const GuestCalc = styled.div `
+//     color: ${props => props.theme.colors.primary};
+//     font-size: ${props => props.theme.fontSizes.xxlarge};
+//     ${props => props.theme.fontSizes.xxlarge};
+//     width: 100%;
+// `;
 
-const MainTitle = styled.h1 `
-    color: ${props => props.theme.colors.orange};
+// const MainTitle = styled.h1 `
+//     color: ${props => props.theme.colors.orange};
 
-    ${mediaQuery.greaterThan("desktop")`
-        color: blue;
-    `}
-`;
+//     ${mediaQuery.greaterThan("desktop")`
+//         color: blue;
+//     `}
+// `;
 
-const MainSubtitle = styled.h2 `
-    color: ${props => props.theme.colors.lightgreen};
-`;
+// const MainSubtitle = styled.h2 `
+//     color: ${props => props.theme.colors.lightgreen};
+// `;
 
-const Para = styled.p `
-    color: ${props => props.theme.colors.black};
-    font-weight: 500;
-`;
+// const Para = styled.p `
+//     color: ${props => props.theme.colors.black};
+//     font-weight: 500;
+// `;
