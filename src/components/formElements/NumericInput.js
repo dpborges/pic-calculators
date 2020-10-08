@@ -16,10 +16,9 @@ import { mediaQuery } from '../../styles/GlobalStyles';
  *    - Apply above pattern to inputContainerStyle
  */
 export const NumericInput = (props) => {
+  console.log(`outline : ${props.outline}`)
 
-  console.log(`fontFamily: ${theme.fontFamily.tertiary}`)
-
-  //Apply any style overrides caller may have provided via props
+  // Apply any style overrides caller may have provided via props
   const inputContainerStyle = props.inputContainerStyle ? props.inputContainerStyle : {};
   const containerStyle      = props.containerStyle ? props.containerStyle : {};
   const errorStyle          = props.errorStyle ? props.errorStyle : {};
@@ -36,14 +35,20 @@ export const NumericInput = (props) => {
 }
 
 /**
- * Prop definitions - props listed below allow you to override existing Styled Component properties
+ * Prop definitions and prop defaults - there are 4 props that allow you to override existing Styled Component properties.
+ * The outline prop defaults to true which shows all 4 sides of border on input field. When set to false it will only
+ * show bottom border.
  */
-
 NumericInput.propTypes = {
   inputContainerStyle:  PropTypes.object,  
   containerStyle:       PropTypes.object,   
   errorStyle:           PropTypes.object,   
-  labelStyle:           PropTypes.object   
+  labelStyle:           PropTypes.object,
+  outline:              PropTypes.bool,   
+};
+
+NumericInput.defaultProps = {
+  outline: true
 };
 
 /**
@@ -62,31 +67,49 @@ const View = styled.div`
 const Label = styled.p`
   color: ${setColor.forLabel};
   font-weight: ${setFontWeight.bolder};
-  font-size: 1.2rem;
+  font-size: 1.45rem;
+  padding-bottom: 3px;
   ${theme.fontFamily.secondary};
-`;
 
+  ${mediaQuery.lessThan("tablet")`
+      font-size: 1.25rem;
+      padding-bottom: 2px;
+  `}
+`;
 
 /**
  * Style for Input element / the correspondig prop name is inputContainerElement
- * Provides style for the inputs placeholder, input text, and border.
+ * Provides style for the inputs placeholder, input text, and border. The outline prop is also 
+ * evaluated below to determine to show full border or just border bottom.
  */
 const StyledNumericInput = styled.input`
-    border: 1px solid ${setColor.mediumgrey}; 
+
+    ${props => props.outline && `
+      border: 1px solid ${setColor.mediumgrey}; `
+    };
+
+    ${props => !props.outline && `
+      border: 1px solid ${setColor.mediumgrey}; 
+      border-right: transparent; 
+      border-left: transparent;
+      border-top: transparent;`
+    };
+
     color: ${setColor.black};
     height: 3.5rem;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: ${setFontWeight.normal};
     margin: 0;
-    padding: 0 3px 5px 5px;
-    text-align: right;
+    padding: 0 4px;
+    text-align: left;
+    outline: none;
 
     ::placeholder {
       color: ${setColor.lightgrey};
-      font-size: 1.25rem;
+      font-size: 1.45rem;
       font-weight: ${setFontWeight.normal};
-      padding: 0 3px 5px 5px;
+      padding: 0 4px;
     }
 
     &:focus { outline: none; };
@@ -102,6 +125,6 @@ const StyledNumericInput = styled.input`
  */
 const Error = styled.p`
    color: red;
-   font-size: 1.2rem;
+   font-size: 1.3rem;
    margin-top: 2px;
 `;

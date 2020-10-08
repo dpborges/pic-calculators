@@ -42,7 +42,7 @@ const GuestListCalculator = (props) => {
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />
-        <NumericInput name="localguests" placeholder="Num local guests" outline={false}  />
+        <NumericInput name="localguests" placeholder="Num local guests"  />
       </ExpansionPanel>
     </Fragment>
   )
