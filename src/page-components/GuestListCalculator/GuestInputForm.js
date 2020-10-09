@@ -1,43 +1,32 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
+import styled from 'styled-components';
+import { mediaQuery } from '../../styles/GlobalStyles';
 // import { Button } from 'react-native-elements'
+import { Input } from '../../components/formElements/Input';
 
-// Example 8 - Is the same as Example 7 but shows how to do validation and error handling using the meta field
- //   The useField hook returns a meta object that gives you access to following:
- //   meta.error, meta.initialError, meta.initialTouched, meta,initialValue, meta.touched, and meta.value.
- //   The touch attribute is true when user has clicked or edited field.
- //   Step 1) Use the meta field inside your custom TextField to check if there is an error. Pass down
- //      props like helperText, placeholder, and error - which is boolean. If true error will show as red.
- //   Step 2) Add the validate prop to the top level Formik component that gets passed a callback that is 
- //      called when an error has occured. The function is passed the values on your form. You can return 
- //      an object with errors that you detect on the form. The format is errors.<field name> = "error message
- //   Step 3) you can also add errors prop the function wrapping the formik Form component and use it you
- //      <pre> tag for debugging purpose
+function GuestInputForm(props) {
 
-function GuestInputForm() {
+  // Configure Input Element as Numeric and set the width
+  const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
+  const containerStyle      = {width: '7rem', height: '9rem'};        // Set the width of the input container.
 
-  // const TextInput = ({placeholder, ...props}) => {
-  //   return ( 
-  //     <TextField {...field} helperText={errorText} placeholder={placeholder} error={!!errorText} />
-  //   )
-  // }
-
-  const TextInput = ({placeholder, ...props}) => {
-    return ( 
-      <input  {...props} />
+  const NumericInput = ( (props) => {
+    return (
+      <Input containerStyle={containerStyle} inputContainerStyle={inputContainerStyle} {...props} />
     )
-  }
+  })
 
   return (
     <div>
-      <Formik initialValues={{ numlocal: 0 }} onSubmit={(data, {setSubmitting, resetForm} ) => {
+      <Formik initialValues={{ localguests: '', outOfTownGuests: '', outOfStateGuests: '' }} onSubmit={(data, {setSubmitting, resetForm} ) => {
           /* here is place you would save your data */
-          console.log(data)
+          console.log("This s data from the submit", data)
           setSubmitting(true);
           /* Call async api to save data here; once completed, set setSubmitting(false) */
           setSubmitting(false);  /*
           /* allows you to reset form after submitting it and saving it to external store */
-          resetForm()
+          // resetForm()
         }}
         validate={(values) => {
           // const errors = {};
@@ -50,17 +39,35 @@ function GuestInputForm() {
         {/* below is the form - The form seems to be wrapped in a function that returns the form as JSX that in 
             turn becomes a children prop to Formik component. That being said, Formik passes down the values and the
             various callbacks */}
-        {({ values, errors, handleSubmit }) => (
+        {({ values, errors, handleSubmit, handleChange }) => (
             <Form>
-
-              <TextInput />
-
-              <div style={{marginTop: '2rem'}}>
-                <button type="solid">Submit</button>
+              <View>
+                <CustomLabel>Enter Number of Local Guests</CustomLabel>
+                <NumericInput name="localguests" placeholder="number"
+                    value={values.localguests}
+                    onChange={handleChange}
+                />
+              </View>              
+              <View>
+                <CustomLabel>Enter Number of Out of Town Guests / (eg. 2-4 hour travel)</CustomLabel>
+                <NumericInput name="outOfTownGuests" placeholder="number"
+                    value={values.outOfTownGuests}
+                    onChange={handleChange}
+                />
+              </View> 
+              <View>
+                <CustomLabel>Enter Number of Out of State Guests / (eg. requiring flight/hotel)</CustomLabel>
+                <NumericInput name="outOfStateGuests" placeholder="number"
+                    value={values.outOfStateGuests}
+                    onChange={handleChange}
+                />
+              </View>
+              <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'flex-end'}}>
+                 <button type="solid">Submit</button>
               </div> 
-
               <pre>{JSON.stringify(values, null, 2)}</pre>
               <pre>Error Object:{JSON.stringify(errors, null, 2)}</pre>
+             
             </Form>
         )}
       </Formik>
@@ -70,3 +77,29 @@ function GuestInputForm() {
 }
 
 export default GuestInputForm;
+
+// ***********************************************************************************
+// Styled Components
+// ***********************************************************************************
+
+const CustomLabel = styled.div`
+  font-size: 1.75rem;
+  margin-top: -2.1rem;
+  width: 50%;
+
+  ${mediaQuery.lessThan("tablet")`
+      font-size: 1.50rem;
+  `}
+`;
+
+const View = styled.div`
+border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  height: 8rem;
+`;

@@ -2,7 +2,7 @@ import React, { useState, Fragment } from  'react';
 import { ExpansionPanel } from '../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
 import GuestInputForm from './GuestInputForm';
-import { NumericInput } from '../../components/formElements/NumericInput'
+import { Input } from '../../components/formElements/Input'
 // import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
 // import { css } from 'styled-components';
 // import { mediaQuery }  from '../components/Styles/GlobalStyles';
@@ -42,7 +42,9 @@ const GuestListCalculator = (props) => {
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />
-        <NumericInput name="localguests" placeholder="Num local guests"  />
+        <GuestInputForm name="localguests" placeholder="Num local guests" label="number of local guests" 
+                        inputContainerStyle={{textAlign: 'right'}}
+        />
       </ExpansionPanel>
     </Fragment>
   )
