@@ -13,7 +13,7 @@ function App() {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         
-          <EventPlanningCalculators theme={theme} />
+          <EventPlanningCalculators />
         
       </ThemeProvider>
     </Fragment>

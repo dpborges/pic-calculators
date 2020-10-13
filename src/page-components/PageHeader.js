@@ -12,10 +12,11 @@ const SHOWOUTLINE = false;  /* for debugging purposes */
 // PageHeader renders the header text as an h1 tag. You can optionally add a background
 // and define the width, to expand background color as desired.
 export default function PageHeader(props) {
+  // clg(`PageHeader props: ${props.theme}`)
 
     return (
-      <HeaderContainer bgcolor={props => props.theme.colors.primary }>
-        <HeaderText fgcolor={setColor.white}>
+      <HeaderContainer bgcolor={({theme}) => theme.color.primary }>
+        <HeaderText fgcolor={({ theme }) => theme.color.white} > 
           Event Planning Calculators
         </HeaderText  >
       </HeaderContainer>
@@ -24,7 +25,7 @@ export default function PageHeader(props) {
 
 const HeaderContainer = styled.div `
     ${SHOWOUTLINE && `border: 2px solid green;`} 
-    background-color: ${props => props.bgcolor ? props.bgcolor : props.theme.colors.primary};
+    background-color: ${props => props.bgcolor ? props.bgcolor : props.theme.color.primary};
     display: flex;
     align-items: center;
     height: 6rem;

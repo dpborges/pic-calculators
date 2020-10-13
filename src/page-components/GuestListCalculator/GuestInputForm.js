@@ -4,18 +4,23 @@ import styled from 'styled-components';
 import { mediaQuery } from '../../styles/GlobalStyles';
 // import { Button } from 'react-native-elements'
 import { Input } from '../../components/formElements/Input';
+import { Button }  from '../../components/buttons/Button';
 
 function GuestInputForm(props) {
 
-  // Configure Input Element as Numeric and set the width
-  const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
+  // Configure Input Element as Numeric Input  and set the width
   const containerStyle      = {width: '7rem', height: '9rem'};        // Set the width of the input container.
+  const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
 
   const NumericInput = ( (props) => {
     return (
       <Input containerStyle={containerStyle} inputContainerStyle={inputContainerStyle} {...props} />
     )
   })
+
+  // Configure SimpleButton 
+  // const containerStyle      = {width: '7rem', height: '9rem'};        // Set the width of the input container.
+  // const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
 
   return (
     <div>
@@ -62,12 +67,12 @@ function GuestInputForm(props) {
                     onChange={handleChange}
                 />
               </View>
-              <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'flex-end'}}>
-                 <button type="solid">Submit</button>
-              </div> 
+              <div style={{marginTop: '1rem', marginRight: '.3rem', display: 'flex', justifyContent: 'flex-end'}}>
+                <Button title="Submit" />
+              </div>
               <pre>{JSON.stringify(values, null, 2)}</pre>
               <pre>Error Object:{JSON.stringify(errors, null, 2)}</pre>
-             
+              
             </Form>
         )}
       </Formik>
@@ -85,7 +90,7 @@ export default GuestInputForm;
 const CustomLabel = styled.div`
   font-size: 1.75rem;
   margin-top: -2.1rem;
-  width: 50%;
+  width: 60%;
 
   ${mediaQuery.lessThan("tablet")`
       font-size: 1.50rem;

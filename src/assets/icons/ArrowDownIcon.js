@@ -8,7 +8,7 @@ import { theme } from '../../styles/theme';
 const ArrowDown = ({className}) => <IoIosArrowDown className={className} />
 
 export const  ArrowDownIcon  = styled(ArrowDown)`
-    color: ${props => props.theme.colors.primary };
+    color: ${props => props.theme.color.primary };
     font-size: 3.2rem;
     font-weight: 900;
     margin: 0;

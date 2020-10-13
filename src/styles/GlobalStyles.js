@@ -15,7 +15,7 @@ import {theme} from "./theme";
 import mediaSettings from "./MediaSettings";  // This set up styled-media-query, which is exported at bottom of file
 
 // Note the reason we're using the theme object directly (instead of props.theme.value) is because 
-// GlobalStyle is a template string nd not a React Component. In order to set defaults in Global 
+// GlobalStyle is a template string and not a React Component. In order to set defaults in Global 
 // styles for fontFamily and background color, we need to access the object directly versus wrapping 
 // a component with our Theme provider component (which is not possible in this case).
 export const GlobalStyle = createGlobalStyle`
@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     }
         
     body {
-        color:  ${theme.colors.black};
+        color:  ${theme.color.black};
         background-color: white;
     }
 
@@ -37,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
        font-size: 62.5%;   
        ${theme.fontFamily.primary};
           
-       background:${theme.colors.white};
+       background:${theme.color.white};
        
        h1{ font-size: 3.2rem; font-weight: 900; padding: 0 1rem;}
        h2{ font-size: 2.4rem; margin: 1.2rem 0;  }

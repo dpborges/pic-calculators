@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from  'react';
 import { ExpansionPanel } from '../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
+import { mediaQuery } from '../../styles/GlobalStyles'
 import GuestInputForm from './GuestInputForm';
 import { Input } from '../../components/formElements/Input'
 // import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
@@ -71,17 +72,17 @@ const SectionHeader = styled.h2`
 `;
 
 const Text = styled.div`
-  /* margin-bottom: 1rem;
-  margin-top: -1rem; */
-  /* border-left: 1px solid #95A5A6;
-  border-bottom: 1px solid #95A5A6;
-  border-right: 1px solid #95A5A6;
-  border-radius: 0 0 5px 5px; */
+  
 `;
 
 const Guidance = styled.p`
   color: ${setColor.black};
-  font-size: 2rem;
+  font-size: ${props => props.theme.fontSize.medium};
   padding: 1rem;
+
+  ${mediaQuery.lessThan("tablet")`
+      font-size: ${props => props.theme.fontSize.small};
+  `}
+
 `;
 

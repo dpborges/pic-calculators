@@ -1,6 +1,6 @@
 import React, { useState } from  'react';
-import { ExpansionPanel } from '../components/surfaces/ExpansionPanel';
-import styled from 'styled-components';
+// import { ExpansionPanel } from '../components/surfaces/ExpansionPanel';
+// import styled from 'styled-components';
 // import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
 // import { css } from 'styled-components';
 // import { mediaQuery }  from '../components/Styles/GlobalStyles';
@@ -12,10 +12,8 @@ import GuestListCalculator from '../page-components/GuestListCalculator';
 // import CollapsibleSection from '../components/common/CollapsibleSection';
 
 export default function EventPlanningCalculators(props) {
-
     // const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */
     // const onClickHandlerForPanel1 = () => {setPanel1Closed(prevPanel1Closed => !prevPanel1Closed)}
-
     return (
       <Page>
         <PageHeader/>
@@ -24,22 +22,14 @@ export default function EventPlanningCalculators(props) {
     )
 }
 
-const TextContainer = styled.div`
-    margin-bottom: 1rem;
-    border-left: 1px solid #95A5A6;
-    border-bottom: 1px solid #95A5A6;
-    border-right: 1px solid #95A5A6;
-    border-radius: 0 0 5px 5px;
-`;
-
-const Guidance = styled.p`
-  color: red;
-  font-size: 2rem;
-  padding: 1rem;
-`;
-
-
-
+// const TextContainer = styled.div`
+//     background-color: ${prop => props.theme.primary }
+//     margin-bottom: 1rem;
+//     border-left: 1px solid #95A5A6;
+//     border-bottom: 1px solid #95A5A6;
+//     border-right: 1px solid #95A5A6;
+//     border-radius: 0 0 5px 5px;
+// `;
 
 /*
   <ExpansionPanel text="Guest List Estimator" closed={panel1Closed} onClickHandler={onClickHandlerForPanel1} mt="3rem">
