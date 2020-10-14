@@ -1,6 +1,6 @@
 import React, { useState } from  'react';
 // import { ExpansionPanel } from '../components/surfaces/ExpansionPanel';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 // import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
 // import { css } from 'styled-components';
 // import { mediaQuery }  from '../components/Styles/GlobalStyles';
@@ -21,6 +21,7 @@ export default function EventPlanningCalculators(props) {
       </Page>
     )
 }
+
 
 // const TextContainer = styled.div`
 //     background-color: ${prop => props.theme.primary }

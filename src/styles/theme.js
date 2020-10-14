@@ -25,12 +25,17 @@ export const theme = {
         tertiary:  css`font-family: 'Montserrat', 'Lato', 'Arial', 'sans-serif'`
     },
     fontSize: {
-        xsmall:     "1.6rem",  
+        xsmall:     "1.4rem",  
         small:      "1.8rem",
         medium:     "2.2rem",
         large:      "2.6rem",
         xlarge:     "3rem",
         xxlarge:    "3.4rem" 
+    },
+    fontWeight: {
+      normal:      400,
+      bold:        700,
+      bolder:      900
     } 
 };
 

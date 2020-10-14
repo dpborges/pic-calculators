@@ -44,7 +44,7 @@ const GuestListCalculator = (props) => {
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />
         <GuestInputForm name="localguests" placeholder="Num local guests" label="number of local guests" 
-                        inputContainerStyle={{textAlign: 'right'}}
+            inputContainerStyle={{textAlign: 'right'}} 
         />
       </ExpansionPanel>
     </Fragment>
@@ -52,18 +52,6 @@ const GuestListCalculator = (props) => {
 }
 
 export default GuestListCalculator;
-
-const ContainerStyle = {
-  border: '1px solid green', 
-  width: '50%'
-}
-
-// const NumericInput = styled.input`
-//     text-align: center;
-//     font-size: 2rem;
-//     height: 4rem;
-//     width:  10rem;
-// `;
 
 const SectionHeader = styled.h2`
   color: ${setColor.black};

@@ -6,7 +6,7 @@ import { mediaQuery } from '../../styles/GlobalStyles'
 /* Button was created to emulate Button from React Native Elements. No width is defined. The width 
    of the button is predicated on length of title.
 
-   Next up should be to implement the loading prop to disable button when making api calls.
+   Next up: implement the loading prop to disable button when making api calls.
     
 */
 export const Button  = (props) => {

@@ -4,19 +4,22 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import { setColor, setFontWeight } from '../../styles/CommonStyles';
 import { mediaQuery } from '../../styles/GlobalStyles';
+import { Label } from './Label';
 
 // ***********************************************************************************
-// React component 
+// Input component 
 // ***********************************************************************************
 /**
- * Input component - this input component tries to emulate Input component from "react native 
- *   elements" so as to provide consistency if and when I use react native.
- *   Props
- *      outline - boolean that is 
+ * This input component tries to emulate Input component from "react native 
+ *   elements" so as to provide consistency if and when I use react native.  Note that
+ *   this input component is used in conjuction with the Label component. The Label
+ *   component expects the label text via the children prop, hence this Input component takes
+ *   a label prop that gets passed to the Label prop as a child text node (props.label). 
  *   
  *  Design Pattern 
  *    1) defined styled component with mediaQuery (within the compoment itself)
- *    2) define prop name that can override basic properties like color, padding, margin of the sytled component
+ *    2) define prop names that can override basic properties like color, padding, margin of 
+ *       the underlying styled sub-components.
  *   Todos 
  *    - Apply above pattern to inputContainerStyle
  */
@@ -26,14 +29,11 @@ export const Input = (props) => {
   const inputContainerStyle = props.inputContainerStyle ? props.inputContainerStyle : {};
   const containerStyle      = props.containerStyle ? props.containerStyle : {};
   const errorStyle          = props.errorStyle ? props.errorStyle : {};
-  const labelStyle          = props.labelStyle ? props.labelStyle : {};
 
   // Render component
   return (
     <View style={containerStyle}>
-      <Label style={{labelStyle}} >
-        {props.label} 
-      </Label >
+      <Label>{props.label}</Label >
       <StyledInput type="text" style={inputContainerStyle} {...props} />
       <Error style={errorStyle}>{props.error}</Error>
     </View>
@@ -55,10 +55,11 @@ Input.propTypes = {
   labelStyle:           PropTypes.object,
   label:                PropTypes.string,
   outline:              PropTypes.bool,   
+
 };
 
 Input.defaultProps = {
-  outline: true,
+  outline: true,  // defaults to true which shows all 4 sides of border on input field
   label: ""
 };
 
@@ -75,22 +76,6 @@ const View = styled.div`
   width: 20rem;
 `;
 
-/**
- * Style for label; prop used to override default style is labelStyle
- */
-const Label = styled.p`
-  color: ${setColor.forLabel};
-  font-weight: ${setFontWeight.bolder};
-  font-size: 1.45rem;
-  height: 1.6rem;
-  padding-bottom: 3px;
-  ${theme.fontFamily.secondary};
-
-  ${mediaQuery.lessThan("tablet")`
-      font-size: 1.25rem;
-      padding-bottom: 2px;
-  `}
-`;
 
 /**
  * Style for Input element / the correspondig prop name is inputContainerElement

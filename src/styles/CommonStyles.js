@@ -6,7 +6,6 @@
 // import defaultImg from './images/aboutBcg.jpeg';
 import { css } from 'styled-components';
 
-
 // The following are helper objects for color and font styles. These objects serve
 // as an abstraction so if you need to change color or font across your project, 
 // you would need to change it in one place.
@@ -37,6 +36,7 @@ export const setZindexTo = {
   layer3: "z-index: 30",   /* layer above layer2   */
   layer4: "z-index: 40"    /* layer above layer3 (top most) */
 }
+
 
 
 /* Note for font family you can set up the font in variation in one, our they can be separate */

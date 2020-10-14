@@ -26,6 +26,8 @@ const Container = styled.div `
     justify-content: center;
     padding: 2% 3%;
     width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
     
     ${mediaQuery.lessThan("tablet")`
         padding: 3% 5%;
