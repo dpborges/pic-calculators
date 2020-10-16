@@ -1,15 +1,7 @@
-import React, { useState } from  'react';
-// import { ExpansionPanel } from '../components/surfaces/ExpansionPanel';
-import styled from 'styled-components';
-// import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
-// import { css } from 'styled-components';
-// import { mediaQuery }  from '../components/Styles/GlobalStyles';
+import React from  'react';
 import Page from '../page-components/Page';
 import PageHeader from '../page-components/PageHeader';
 import GuestListCalculator from '../page-components/GuestListCalculator';
-
-// import { ExpansionPanel } from '../components/common/ExpansionPanel';
-// import CollapsibleSection from '../components/common/CollapsibleSection';
 
 export default function EventPlanningCalculators(props) {
     // const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */

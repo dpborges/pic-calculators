@@ -3,21 +3,13 @@ import { ExpansionPanel } from '../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
 import { mediaQuery } from '../../styles/GlobalStyles'
 import GuestInputForm from './GuestInputForm';
-import { Input } from '../../components/formElements/Input'
-// import { GlobalStyle, mediaQuery }  from '../components/Styles/GlobalStyles';
-// import { css } from 'styled-components';
-// import { mediaQuery }  from '../components/Styles/GlobalStyles';
-// import Page from '../page-components/Page';
-// import PageHeader from '../page-components/PageHeader';
-// import { ExpansionPanel } from '../components/common/ExpansionPanel';
-// import CollapsibleSection from '../components/common/CollapsibleSection';
 import { setColor } from '../../styles/CommonStyles';
 import { HorizRule } from '../../components/decorators/HorizRule';
 
 /**
  * TODOS
- * 1. Render form  GuestListCalculatorForm that uses Formik with react native elements
- * 2. Once form is rendered, see if I can create a numeric input component from React Native Elements Text field
+ * 1. (DONE) Render form  GuestListCalculatorForm that uses Formik with react native elements
+ * 2. (DONE) Once form is rendered, see if I can create a numeric input component from React Native Elements Text field
  *    and yup so I can reuse as a numeric input going forward.
  * 3. Once step 1 and 2 are completed, pass down a callback to the form that gets passed the from data when the form is 
  *    successfully submitted
@@ -39,7 +31,11 @@ const GuestListCalculator = (props) => {
         <SectionHeader>Guest List Calculator</SectionHeader>
         <Text>
           <Guidance>
-            Excepteur Lorem enim quis reprehenderit id proident mollit ea laborum do aliqua aliquip. Adipisicing eu minim do quis deserunt. Reprehenderit qui do exercitation nisi Lorem est proident amet et. Sit dolore mollit et esse elit mollit proident in nostrud anim nulla nisi laborum. Quis minim duis occaecat ut laboris elit dolore culpa ea excepteur est commodo pariatur aliqua. Ad in laborum anim deserunt. Ex velit consequat qui velit labore laborum enim eiusmod amet enim labore excepteur.
+            When sending out invites bear in mind that everyone may not able to attend  
+            your event for various reasons (eg. other commitments, long distance travel,  previous engagement,  
+            illness, etc). The guest calculator makes an attempt to calculate percent of people that may 
+            attend vs the  potential  number of "no shows", based on whether invitees are local, out of town
+            or out of state guests. Many event planners use this count to determine food and drink estimates.
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />

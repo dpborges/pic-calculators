@@ -12,7 +12,6 @@ const SHOWOUTLINE = false;  /* for debugging purposes */
 // PageHeader renders the header text as an h1 tag. You can optionally add a background
 // and define the width, to expand background color as desired.
 export default function PageHeader(props) {
-  // clg(`PageHeader props: ${props.theme}`)
 
     return (
       <HeaderContainer bgcolor={({theme}) => theme.color.primary }>
@@ -42,8 +41,8 @@ const HeaderText = styled.h1 `
     word-spacing: 2px;
     font-size: 3rem;
 
-    ${mediaQuery.lessThan("phone")`
-        font-size: 2.3rem;
+    ${mediaQuery.lessThan("tablet")`
+        font-size: 2.2rem;
         text-align: center;
     `}
 `;

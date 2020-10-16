@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ArrowDownIcon } from '../../assets/icons/ArrowDownIcon'
 import RotateXOnTrigger from '../../animations/RotateXOnTrigger';
 // import CollapsibleSectionv1 from '../../animations/CollapsibleSectionv1';

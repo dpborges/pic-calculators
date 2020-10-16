@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components';
-import { theme } from '../../styles/theme';
 import { setColor, setFontWeight } from '../../styles/CommonStyles';
 import { mediaQuery } from '../../styles/GlobalStyles';
 import { Label } from './Label';

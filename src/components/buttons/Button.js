@@ -16,13 +16,15 @@ export const Button  = (props) => {
   const buttonStyle      = props.buttonStyle ? props.buttonStyle : {};
   const titleStyle      = props.titleStyle ? props.titleStyle : {};
   const onclickHandler   = props.onclickHandler ? props.onclickHandler : () => "" ;
+  // const type            = props.onclickHandler ? props.onclickHandler : () => "" ;
   
   /* If button is being used on a form(as a submit button), you don't need the onClickHandler. 
       If the onclickHandler prop is not specified, button will therefore be rendered without the 
       onClick handler and without the button type. */
   return  (
     <View style={containerStyle}>
-      <StyledButton buttonStyle={buttonStyle} onclickHandler={onclickHandler}>
+      <StyledButton buttonStyle={buttonStyle} onclickHandler={onclickHandler} {...props}
+      >
         <Text style={titleStyle}>{props.title}</Text>
       </StyledButton>
     </View>

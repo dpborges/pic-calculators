@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components';
-import { setColor, setFontWeight, setMediaWidth } from '../../styles/CommonStyles';
 import { mediaQuery } from '../../styles/GlobalStyles';
 
 // ***********************************************************************************
@@ -13,7 +12,10 @@ import { mediaQuery } from '../../styles/GlobalStyles';
  * the content in between (as per html spec), hence a label prop is not required. The
  * label text is passed as a children prop instead.
  * 
- * Note: media styles for the View component should be set via the default prop "mediaStyles".
+ * Note: Inline styles do not support media queries. Instead, use the mediaStyles object 
+ * to communicate mediaQuery specific changes. See the View component for an example. If
+ * you plan to use mediaStyles (to customize component), be sure to add the default media
+ * query property in the defaultProps.
  * 
  * Note, if using with a form, there are two ways to associate a Label with the input 
  * element on a form:
@@ -25,8 +27,7 @@ import { mediaQuery } from '../../styles/GlobalStyles';
  *      </Label>
  */
 export const Label = (props) => {
-  
-  console.log(`Inside Label, this is props: ${JSON.stringify(props)}`)
+     
   // Apply any style overrides caller may have provided via props
   const containerStyle      = props.containerStyle ? props.containerStyle : {};
   const labelStyle          = props.labelStyle ? props.labelStyle : {};
@@ -34,7 +35,7 @@ export const Label = (props) => {
 
   // Render component
   return (
-    <View mediaStyles={mediaStyles}>
+    <View mediaStyles={mediaStyles} style={containerStyle}>
       <StyledLabel style={labelStyle}  {...props} >
         {props.children} 
       </StyledLabel >
@@ -89,10 +90,3 @@ const StyledLabel = styled.label`
       padding-bottom: 2px;
   `}
 `;
-
-
-{/* <View style={containerStyle}>
-<StyledLabel style={{labelStyle}} {...props} >
-  {children} 
-</StyledLabel >
-</View> */}

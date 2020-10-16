@@ -2,8 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowDown } from "react-icons/io";
-import { theme } from '../../styles/theme';
-
 
 const ArrowDown = ({className}) => <IoIosArrowDown className={className} />
 

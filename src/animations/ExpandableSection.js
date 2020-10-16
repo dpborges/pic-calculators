@@ -9,7 +9,6 @@ export default function ExpandableSection({trigger, children}) {
   return (
     <Transition in={!trigger} timeout={DURATION} >
       {status => {
-        {/* console.log(status) */}
         return (
           <div style={{ 
                 ...defaultStyle,
