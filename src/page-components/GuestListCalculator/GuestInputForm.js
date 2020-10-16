@@ -114,7 +114,7 @@ const GuestInputForm = (props) => {
                   <Result>{totalInvites}</Result>
                 </ResultLayout>
                 <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles} >Estimated to Attend</Label>
+                  <Label mediaStyles={labelMediaStyles}>Likely to Attend</Label>
                   <Result>{likelyToAttend}</Result>
                 </ResultLayout>
                 <ResultLayout>
