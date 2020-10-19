@@ -2,8 +2,8 @@ import React from  'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components';
 // import { GlobalStyle }  from '../Styles/GlobalStyles';
-import { mediaQuery }  from '../styles/GlobalStyles';
-import { setColor }  from '../styles/CommonStyles';
+import { mediaQuery }  from '../../styles/GlobalStyles';
+import { setColor }  from '../../styles/CommonStyles';
 // import { theme } from '../Styles/theme';
 
 const SHOWOUTLINE = false;  /* for debugging purposes */

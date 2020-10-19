@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import EventPlanningCalculators from './pages/EventPlanningCalculators';  /* This component is the entry point to your application */
+// import EventPlanningCalculators from './pages/EventPlanningCalculators';  /* This component is the entry point to your application */
+import EventPlanningToolsPage from './pages/EventPlanningToolsPage';  /* This component is the entry point to your application */
 import { ThemeProvider }       from 'styled-components';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { theme }     from './styles/theme';
@@ -12,7 +13,7 @@ function App() {
     <Fragment>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-          <EventPlanningCalculators />
+          <EventPlanningToolsPage />
       </ThemeProvider>
     </Fragment>
   );

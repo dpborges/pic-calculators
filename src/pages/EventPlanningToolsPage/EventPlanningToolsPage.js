@@ -1,9 +1,9 @@
 import React from  'react';
-import Page from '../page-components/Page';
-import PageHeader from '../page-components/PageHeader';
-import GuestListCalculator from '../page-components/GuestListCalculator';
+import Page from '../components/Page';
+import PageHeader from '../components/PageHeader';
+import GuestListCalculator from './GuestListCalculator';
 
-export default function EventPlanningCalculators(props) {
+export default function EventPlanningToolsPage(props) {
     // const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */
     // const onClickHandlerForPanel1 = () => {setPanel1Closed(prevPanel1Closed => !prevPanel1Closed)}
     return (

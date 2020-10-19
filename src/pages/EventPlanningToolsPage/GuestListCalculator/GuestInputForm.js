@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import styled from 'styled-components';
 import * as yup from 'yup';
-import { mediaQuery } from '../../styles/GlobalStyles';
+import { mediaQuery } from '../../../styles/GlobalStyles';
 // import { Button } from 'react-native-elements'
-import { Input } from '../../components/formElements/Input';
-import { Label } from '../../components/formElements/Label';
-import { Button }  from '../../components/buttons/Button';
-import { HorizRule } from '../../components/decorators/HorizRule';
-import { setColor } from '../../styles/CommonStyles';
+import { Input } from '../../../components/formElements/Input';
+import { Label } from '../../../components/formElements/Label';
+import { Button }  from '../../../components/buttons/Button';
+import { HorizRule } from '../../../components/decorators/HorizRule';
+import { setColor } from '../../../styles/CommonStyles';
 import calcEstimatedGuests from './calcEstimatedGuests';
-  import {hasAtLeastOneNonEmptyValue}  from '../../utils/validators/hasAtLeastOneNonEmptyValue'
+  import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
 
 const GuestInputForm = (props) => {
 

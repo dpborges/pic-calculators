@@ -1,6 +1,6 @@
 
 // ************************************************************
-// Function used for Guest List Calc
+// Function used for Guest List Calculator
 // ************************************************************
 
 const calcEstimatedGuests = (numLocalGuests, numOutOfTownGuests, numOutOfStateGuests) => {

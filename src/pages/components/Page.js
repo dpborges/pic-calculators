@@ -1,6 +1,6 @@
 import React from  'react';
 import styled from 'styled-components';
-import { mediaQuery }  from '../styles/GlobalStyles';
+import { mediaQuery }  from '../../styles/GlobalStyles';
 
 const SHOWOUTLINE = false;  /* for debugging purposes */
 const DESKTOP  = "1170px";   /* Same value as what is defined in MediaSettings.js */

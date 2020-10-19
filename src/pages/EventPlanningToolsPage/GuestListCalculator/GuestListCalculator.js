@@ -1,10 +1,10 @@
 import React, { useState, Fragment } from  'react';
-import { ExpansionPanel } from '../../components/surfaces/ExpansionPanel';
+import { ExpansionPanel } from '../../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
-import { mediaQuery } from '../../styles/GlobalStyles'
+import { mediaQuery } from '../../../styles/GlobalStyles'
 import GuestInputForm from './GuestInputForm';
-import { setColor } from '../../styles/CommonStyles';
-import { HorizRule } from '../../components/decorators/HorizRule';
+import { setColor } from '../../../styles/CommonStyles';
+import { HorizRule } from '../../../components/decorators/HorizRule';
 
 /**
  * TODOS
