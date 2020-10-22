@@ -45,7 +45,14 @@ export const setFont = {
     slanted: "font-family: 'Courgette', cursive;",
 }
 
+export const setTextAlign = (position) => {
+   return css`text-align: ${position}`;
+}
 
+
+export const setWidth = (width) => {
+   return width ? css`width: ${width}` : ``;
+}
 
 
 /* Helper function used for as a reusable flex directives (Lesson 44) */

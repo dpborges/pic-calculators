@@ -30,7 +30,7 @@ export const ExpansionPanel = (props) => {
                   </RotateXOnTrigger>
               </ExpansionBar>
           </PanelContainer>
-          <ExpandableSection trigger={closed}>
+          <ExpandableSection trigger={closed} expandedHeight={props.expandedHeight}>
             {props.children}
           </ExpandableSection>
         </div>

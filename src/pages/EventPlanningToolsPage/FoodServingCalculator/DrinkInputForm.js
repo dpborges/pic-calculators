@@ -9,13 +9,18 @@ import { Label } from '../../../components/formElements/Label';
 import { Button }  from '../../../components/buttons/Button';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 import { setColor } from '../../../styles/CommonStyles';
-import calcEstimatedGuests from './calcEstimatedGuests';
-  import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
+import calcEstimatedGuests from './calcDrinks';
+import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
+import drinkDataSet from './drinkDataSet';
+import DrinkResults from './DrinkResults';
 
-const GuestInputForm = (props) => {
-  
-  let theFormCallBack = props.formCallBack;
-  
+const DrinkInputForm = (props) => {
+
+  // Initialize 
+  let numGuestFromGuestListCalculator = props.numGuests;
+
+  console.log(`Inside Drink Input Form ; this is props.numGuests ${props.numGuests}`)
+
   // Initial state variables
   const [formStatus, setFormStatus] = useState("");
 
@@ -37,36 +42,31 @@ const GuestInputForm = (props) => {
   })
 
   // Configure label component by setting property on media query for labels used in the  Results component
-  const labelMediaStyles = { width: 7 }
+  const labelMediaStyles = { width: 7 };
+  const labelStyle = {color: `${setColor.blue}`}
+  const labelContainer = {padding: '1.75rem 0'}
 
   // Define validation schema
   const validationSchema = yup.object({
-    localguests: yup.number().integer().min(0, "invalid entry").notRequired("* is required").typeError("Not a number"),
-    outOfTownGuests: yup.number().integer().min(0, "invalid entry").notRequired().typeError("Not a number"),
-    outOfStateGuests: yup.number().integer().min(0, "invalid entry").notRequired().typeError("Not a number")
+    numGuests: yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
+    numHours:  yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
   })
 
   return (
     <div>
-      <Formik initialValues={{ localguests: "0", outOfTownGuests: "0", outOfStateGuests: "0" }} onSubmit={(data, {setSubmitting, setErrors, resetForm} ) => {
+      <Formik initialValues={{ numGuests: "", numHours: ""}} onSubmit={(data, {setSubmitting, setErrors, resetForm} ) => {
           
           // Ensure empty strings are convert to 0 on input.
-          let lg   = data.localguests      === "" ? 0 : data.localguests;
-          let ootg = data.outOfTownGuests  === "" ? 0 : data.outOfTownGuests;
-          let oosg = data.outOfStateGuests === "" ? 0 : data.outOfStateGuests;
+          let ng = data.numGuests      === "" ? 0 : data.numGuests;
+          let nh = data.numHours  === "" ? 0 : data.numHours;
 
-          // Set form error if at least one value was not entered. 
-          let hasOneInput = hasAtLeastOneNonEmptyValue([lg,  ootg, oosg], 0);
-          hasOneInput ? setFormStatus("") : setFormStatus("At least one value required");
-
+          console.log("This is numGuests ", ng)
+          console.log("This is numHours ", nh)
           // Calculate the guest estimates
-          let results = calcEstimatedGuests(lg, ootg, oosg);
-          setTotalInvites(results.totalInvites);
-          setLikelyToAttend(results.likelyToAttend);
-          setPossibleNoShows(results.possibleNoShows);
-
-          // Fire the callback passed down from EventPlanningToolsPage to provide parent page numGuests likely to attend
-          theFormCallBack(results.likelyToAttend)
+          // let results = calcEstimatedGuests(lg, ootg, oosg);
+          // setTotalInvites(results.totalInvites);
+          // setLikelyToAttend(results.likelyToAttend);
+          // setPossibleNoShows(results.possibleNoShows);
 
           setSubmitting(true);
           /* Call async api to save data here; once completed, set setSubmitting(false) */
@@ -80,58 +80,50 @@ const GuestInputForm = (props) => {
             turn becomes a children prop to Formik component. That being said, Formik passes down the values and the
             various callbacks */}
         {({ values, errors, handleSubmit, handleChange }) => (
-            <Form autocomplete="false">
+            <Form>
               <FormErrorMsg>{formStatus}</FormErrorMsg>
               <View>
-                <CustomLabel>Enter Number of Local Guests</CustomLabel>
-                <NumericInput name="localguests" placeholder="number"
-                    value={values.localguests}
+                <CustomLabel>Enter Number of Guests</CustomLabel>
+                <NumericInput name="numGuests" placeholder="number"
+                    value={values.numGuests}
                     onChange={handleChange}
-                    error={errors.localguests}
-                    autocomplete="false"
-                    type="text"
+                    error={errors.numGuests}
                 />
               </View>              
               <View>
-                <CustomLabel>Enter Number of Out of Town Guests / (eg. 2-4 hour travel)</CustomLabel>
-                <NumericInput name="outOfTownGuests" placeholder="number"
-                    value={values.outOfTownGuests}
+                <CustomLabel>Enter Number of Hours for the Event</CustomLabel>
+                <NumericInput name="numHours" placeholder="number"
+                    value={values.numHours}
                     onChange={handleChange}
-                    error={errors.outOfTownGuests}
-                    autocomplete="false"
+                    error={errors.numHours}
                 />
               </View> 
-              <View>
-                <CustomLabel>Enter Number of Out of State Guests / (eg. requiring flight/hotel)</CustomLabel>
-                <NumericInput name="outOfStateGuests" placeholder="number"
-                    value={values.outOfStateGuests}
-                    onChange={handleChange}
-                    error={errors.outOfStateGuests}
-                    autocomplete="off"
-                />
-              </View>
-
+            {/*
               <ButtonContainer>
-                <Button title="Submit" type="submit" />
+                <Button title="Calculate" type="submit" />
               </ButtonContainer>
-
+            */}
               <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"/>
               
-              <ResultsContainer>
+              <ColumnHeadings>
                 <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles}> Total Guests</Label>
-                  <Result>{totalInvites}</Result>
+                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}> 
+                    Type of Drink
+                  </Label>
                 </ResultLayout>
                 <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles}>Likely to Attend</Label>
-                  <Result>{likelyToAttend}</Result>
+                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}>
+                    Unit of Measure
+                  </Label>
                 </ResultLayout>
                 <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles}>Possible No Shows</Label>
-                  <Result>{possibleNoShows}</Result>
+                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}>
+                    Quantity
+                  </Label>
                 </ResultLayout>
-              </ResultsContainer>
-              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="2px" mt="2rem"/>
+              </ColumnHeadings>
+              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="2px" mb="1rem"/>
+              <DrinkResults numGuests={values.numGuests} numHours={values.numHours} />
             </Form>
         )}
       </Formik>
@@ -140,7 +132,7 @@ const GuestInputForm = (props) => {
   );
 }
 
-export default GuestInputForm;
+export default DrinkInputForm;
 
 // ***********************************************************************************
 // Styled Components
@@ -148,7 +140,7 @@ export default GuestInputForm;
 
 const CustomLabel = styled.div`
   font-size: 1.9rem;
-  /* margin-top: -2.1rem; */
+  margin-top: -2.1rem;
   width: 60%;
 
   ${mediaQuery.lessThan("tablet")`
@@ -167,16 +159,29 @@ const View = styled.div`
   height: 8rem;
 `;
 
+const ColumnHeadings = styled.div`
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 1.2rem; */
+
+  ${mediaQuery.lessThan("tablet")`
+     margin: 0;
+  `}
+`;
+
 const ResultsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1.2rem;
 
   ${mediaQuery.lessThan("tablet")`
-     margin-: 0;
+     margin: 0;
   `}
-
 `;
+
+
+
+
 
 const ResultLayout = styled.div`
   display: flex;

@@ -73,7 +73,6 @@ const View = styled.div`
   `}
 `;
 
-
 /**
  * Style for label; prop used to override default style is labelStyle
  */
