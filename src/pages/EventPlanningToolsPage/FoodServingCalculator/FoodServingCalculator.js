@@ -2,7 +2,7 @@ import React, { useState, Fragment } from  'react';
 import { ExpansionPanel } from '../../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
 import { mediaQuery } from '../../../styles/GlobalStyles'
-import DrinkInputForm from './DrinkInputForm';
+import FoodInputForm from './FoodInputForm';
 import { setColor } from '../../../styles/CommonStyles';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 
@@ -44,7 +44,7 @@ const FoodServingCalculator = (props) => {
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />
-        <DrinkInputForm name="localguests" placeholder="Num local guests" label="number of local guests" 
+        <FoodInputForm name="localguests" placeholder="Num local guests" label="number of local guests" 
             inputContainerStyle={{textAlign: 'right'}} numGuests={props.numGuests}
         />
       </ExpansionPanel>

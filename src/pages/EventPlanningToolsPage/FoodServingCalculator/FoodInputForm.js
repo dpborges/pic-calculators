@@ -9,12 +9,12 @@ import { Label } from '../../../components/formElements/Label';
 import { Button }  from '../../../components/buttons/Button';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 import { setColor } from '../../../styles/CommonStyles';
-import calcEstimatedGuests from './calcDrinks';
+import calcEstimatedGuests from './calcFoodServings';
 import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
-import drinkDataSet from './drinkDataSet';
-import DrinkResults from './DrinkResults';
+import foodDataSet from './foodDataSet';
+import FoodResults from './FoodResults';
 
-const DrinkInputForm = (props) => {
+const FoodInputForm = (props) => {
 
   // Initialize 
   let numGuestFromGuestListCalculator = props.numGuests;
@@ -41,11 +41,6 @@ const DrinkInputForm = (props) => {
     )
   })
 
-  // Configure label component by setting property on media query for labels used in the  Results component
-  const labelMediaStyles = { width: 7 };
-  const labelStyle = {color: `${setColor.blue}`}
-  const labelContainer = {padding: '1.75rem 0'}
-
   // Define validation schema
   const validationSchema = yup.object({
     numGuests: yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
@@ -60,19 +55,10 @@ const DrinkInputForm = (props) => {
           let ng = data.numGuests      === "" ? 0 : data.numGuests;
           let nh = data.numHours  === "" ? 0 : data.numHours;
 
-          console.log("This is numGuests ", ng)
-          console.log("This is numHours ", nh)
-          // Calculate the guest estimates
-          // let results = calcEstimatedGuests(lg, ootg, oosg);
-          // setTotalInvites(results.totalInvites);
-          // setLikelyToAttend(results.likelyToAttend);
-          // setPossibleNoShows(results.possibleNoShows);
-
           setSubmitting(true);
           /* Call async api to save data here; once completed, set setSubmitting(false) */
           setSubmitting(false);  /*
           /* allows you to reset form after submitting it and saving it to external store */
-          // resetForm()
         }}
         validationSchema={ validationSchema }
       > 
@@ -104,35 +90,15 @@ const DrinkInputForm = (props) => {
               </ButtonContainer>
             */}
               <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"/>
-              
-              <ColumnHeadings>
-                <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}> 
-                    Type of Drink
-                  </Label>
-                </ResultLayout>
-                <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}>
-                    Unit of Measure
-                  </Label>
-                </ResultLayout>
-                <ResultLayout>
-                  <Label mediaStyles={labelMediaStyles} labelStyle={labelStyle} containerStyle={labelContainer}>
-                    Quantity
-                  </Label>
-                </ResultLayout>
-              </ColumnHeadings>
-              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="2px" mb="1rem"/>
-              <DrinkResults numGuests={values.numGuests} numHours={values.numHours} />
+              <FoodResults numGuests={values.numGuests} numHours={values.numHours} />
             </Form>
         )}
       </Formik>
     </div>
-  
   );
 }
 
-export default DrinkInputForm;
+export default FoodInputForm;
 
 // ***********************************************************************************
 // Styled Components
@@ -159,16 +125,6 @@ const View = styled.div`
   height: 8rem;
 `;
 
-const ColumnHeadings = styled.div`
-  display: flex;
-  justify-content: space-between;
-  /* margin-top: 1.2rem; */
-
-  ${mediaQuery.lessThan("tablet")`
-     margin: 0;
-  `}
-`;
-
 const ResultsContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -177,19 +133,6 @@ const ResultsContainer = styled.div`
   ${mediaQuery.lessThan("tablet")`
      margin: 0;
   `}
-`;
-
-
-
-
-
-const ResultLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  /* ${mediaQuery.lessThan("tablet")`
-    flex-direction: column;
-  `} */
 `;
 
 const Result = styled.div`

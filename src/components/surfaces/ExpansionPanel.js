@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { mediaQuery } from '../../styles/GlobalStyles';
 import { ArrowDownIcon } from '../../assets/icons/ArrowDownIcon'
 import RotateXOnTrigger from '../../animations/RotateXOnTrigger';
 // import CollapsibleSectionv1 from '../../animations/CollapsibleSectionv1';
@@ -70,6 +71,12 @@ const ExpansionBar = styled.div `
 const ExpansionBarLabel = styled.p`
   color: black;
   font-size: 2.4rem;
+  margin-top: 2px;
+
+  ${mediaQuery.lessThan("tablet")`
+      font-size: 2.1rem;
+      margin-top: 4px
+  `}
 `;
 
 

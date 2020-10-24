@@ -122,7 +122,7 @@ const DrinkInputForm = (props) => {
                   </Label>
                 </ResultLayout>
               </ColumnHeadings>
-              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="2px" mb="1rem"/>
+              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
               <DrinkResults numGuests={values.numGuests} numHours={values.numHours} />
             </Form>
         )}
@@ -178,8 +178,6 @@ const ResultsContainer = styled.div`
      margin: 0;
   `}
 `;
-
-
 
 
 

@@ -27,20 +27,29 @@ const DrinkCalculator = (props) => {
 
   console.log(`Inside Drink calculator ${JSON.stringify(props)}`)
 
+  // Enter the number of guests and the number of hours for the event. If serving one type of 
+  // drink (eg. wine), you can use the estimate provided. If serving more than 1 type of drink 
+  // (eg. beer alcohol, and wine), you may need to lower the estimates, according to guest preferences. 
+  // If happen you know your guests, you can enter the number of wine drinkers for example, instead of 
+  // entering total guests, and use this for your wine estimate. Do the same for the alcohol 
+  // and beer drinkers. This will give you the best results.
+
+
   return (
     <Fragment>
       <ExpansionPanel text="Standard Drink Calculator" closed={panel1Closed} onClickHandler={onClickHandlerForPanel1} 
-         expandedHeight={{min: '70', max: '84'}} mt="3rem"
+         expandedHeight={{min: '74', max: '104'}} mt="3rem"
       >
         <SectionHeader>Standard Drink Calculator</SectionHeader>
         <Text>
           <Guidance>
             Enter the number of guests and the number of hours for the event. If serving one type of 
-            drink (eg. wine), you can use the estimate provided. If serving more than 1 type of drink 
-            (eg. beer alcohol, and wine), you may need to lower the estimates, based on guest preferences. 
-            If you know your guests, you can enter the number of wine drinkers for example, instead of 
-            entering all guests, and use this for your wine estimate. Then do the same for the alcohol 
-            and beer drinkers. This will give you the best results.
+            drink (eg. wine), you can use the provided estimate. If serving more than one type of drink 
+            (eg. beer alcohol, and wine), you may need to lower the estimates, based on the number of 
+            people that will be drinking wine, vs beer or alcohol. If you have have an idea of the 
+            number of wine drinkers, for example, enter this number instead of entering total number of guests.
+            Use this quantity for your wine. Do the same for the alcohol and beer drinkers. 
+            This will give you the best results.
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />

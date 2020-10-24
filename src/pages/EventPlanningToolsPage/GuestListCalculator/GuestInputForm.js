@@ -131,7 +131,7 @@ const GuestInputForm = (props) => {
                   <Result>{possibleNoShows}</Result>
                 </ResultLayout>
               </ResultsContainer>
-              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="2px" mt="2rem"/>
+              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"/>
             </Form>
         )}
       </Formik>
