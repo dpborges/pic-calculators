@@ -1,19 +1,13 @@
 
-// Grouping | Type Of Food | Unit | size | Qty
+// Grouping | Type Of Food | Unit | Qty
 const foodTypes =  {
 
-  // The appetizers array was separate out by the 2 below
-  appetizers: [
-    ["Appetizers only",           "Appetizer", "43"],
+  appetizersB4Meal: [
     ["Appetizers before meal",    "Appetizer", "33"]
   ],
 
   appetizersOnly: [
-    ["Appetizers only",           "Appetizer", "43"]
-  ],
-
-  appetizersB4Meal: [
-    ["Appetizers before meal",       "Appetizer", "41"]
+    ["Appetizers",           "Appetizer", "43"],
   ],
 
   otherSides: [
@@ -24,7 +18,7 @@ const foodTypes =  {
   ],
 
   meal: [
-    ["Poultry, Meat, or Fish",    "Lbs",          "5"],
+    ["Poultry, Meat, Fish",       "Lbs",          "5"],
     ["Boneless Beef Roast",       "Lbs",          "5"],
     ["Pork Roast or Ham",         "Lbs",          "5"],
     ["Casseroles",                "13x9 dish",    "2"],

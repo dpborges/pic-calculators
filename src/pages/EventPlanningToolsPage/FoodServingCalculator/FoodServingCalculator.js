@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from  'react';
+import React, { Fragment } from  'react';
 import { ExpansionPanel } from '../../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
 import { mediaQuery } from '../../../styles/GlobalStyles'
@@ -22,17 +22,12 @@ import { HorizRule } from '../../../components/decorators/HorizRule';
  */
 const FoodServingCalculator = (props) => {
 
-  const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */
-  const onClickHandlerForPanel1 = () => {setPanel1Closed(prevPanel1Closed => !prevPanel1Closed)}
-
-  console.log(`Inside Drink calculator ${JSON.stringify(props)}`)
-
   return (
     <Fragment>
-      <ExpansionPanel text="Food Serving Calculator" closed={panel1Closed} onClickHandler={onClickHandlerForPanel1} 
-         expandedHeight={{min: '70', max: '84'}} mt="3rem"
+      <ExpansionPanel text="Food Serving Calculator" closed={props.closed} 
+         onClickHandler={props.onClickHandler}  
+         expandedHeight={{min: '122', max: '180'}} mt="3rem"
       >
-        <SectionHeader>Food Serving Calculator</SectionHeader>
         <Text>
           <Guidance>
             Enter the number of guests and the number of hours for the event. If serving one type of 
@@ -54,14 +49,14 @@ const FoodServingCalculator = (props) => {
 
 export default FoodServingCalculator;
 
-const SectionHeader = styled.h2`
-  color: ${setColor.black};
-  padding-left: 1rem;
-  padding-top: 1rem;
-`;
+// const SectionHeader = styled.h2`
+//   color: ${setColor.black};
+//   padding-left: 1rem;
+//   padding-top: 1rem;
+// `;
 
 const Text = styled.div`
-  
+   margin-top: 1rem;
 `;
 
 const Guidance = styled.p`

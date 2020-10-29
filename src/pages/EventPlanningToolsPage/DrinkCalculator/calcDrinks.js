@@ -1,4 +1,3 @@
-
 // ************************************************************
 // Function used for Guest List Calculator
 // ************************************************************
@@ -6,7 +5,6 @@
 const calcDrinks = (dataSet, numGuests, numHours) => {
 
     // Set rule of thumbs for alcoholic beverages
-    const numDrinksPerPersonPerHour = 1;
     const numDrinksPer750mlBottle   = 15;
 
     // Set rule of thumbs for wine

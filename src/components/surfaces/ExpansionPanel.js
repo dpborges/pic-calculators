@@ -20,15 +20,21 @@ import ExpandableSection from '../../animations/ExpandableSection';
 export const ExpansionPanel = (props) => {
     let {closed}  = props;
 
+    // Set a the default desktop size for those times prop is undefined during initial renders.
+    let labelMediaStyle = props.labelMediaStyle ? props.labelMediaStyle : { marginTop: "4px"};
+    let labelStyle      = props.labelStyle      ? props.labelStyle      : { fontWeight: 400 };
+
     // Return  JSX
     return (
         <div>
           <PanelContainer mt={props.mt}>
               <ExpansionBar onClick={props.onClickHandler}>
-                  <ExpansionBarLabel>{props.text}</ExpansionBarLabel>
-                  <RotateXOnTrigger trigger={closed}>
+                <ExpansionBarLabel labelMediaStyle={labelMediaStyle} labelStyle={labelStyle} >
+                    {props.text}
+                </ExpansionBarLabel>
+                <RotateXOnTrigger trigger={closed}>
                     <ArrowDownIcon />
-                  </RotateXOnTrigger>
+                </RotateXOnTrigger>
               </ExpansionBar>
           </PanelContainer>
           <ExpandableSection trigger={closed} expandedHeight={props.expandedHeight}>
@@ -42,10 +48,12 @@ export const ExpansionPanel = (props) => {
 ExpansionPanel.propTypes = {
     onClickHandler: PropTypes.func,    /* the handler to call when user clicks on arrow icon */
     text:           PropTypes.string,  /* Text label  to display on the expansion bar */
-    closed:         PropTypes.bool     /* indicating if panel closed or not */
+    closed:         PropTypes.bool,    /* indicating if panel closed or not */
+    labelMediaStyle: PropTypes.object  /* Provides a media style for mobile devices if different than desktop */
 };
 
-// Styles
+
+// Style Components
 const PanelContainer = styled.div `
   display: flex;
   justify-content: center;
@@ -68,15 +76,19 @@ const ExpansionBar = styled.div `
   }
 `;
 
-const ExpansionBarLabel = styled.p`
+const ExpansionBarLabel = styled.p `
   color: black;
-  font-size: 2.4rem;
-  margin-top: 2px;
+  font-size: 2.2rem;
+  margin-top: 3px;
+  font-weight: ${props => props.labelStyle.fontWeight};
 
   ${mediaQuery.lessThan("tablet")`
-      font-size: 2.1rem;
-      margin-top: 4px
+      font-size: 2rem;
+      margin-top: ${props => props.labelMediaStyle.marginTop};
   `}
 `;
 
 
+/*
+// margin-top: ${props => props.labelMediaStyle.marginTop};
+*/

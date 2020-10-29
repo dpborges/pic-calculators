@@ -20,13 +20,12 @@ import { Transition } from 'react-transition-group';
  * Future enhancement: when used with another object and may need to provide transform origin 
  *   as a prop so I can reset hardcode values provided in the inline styles.
  * 
- * For debugging purpose
+ * For debugging purpose add a console.log(status) before the return statement to transition states
  */
 export default function RotateXOnTrigger({trigger, children}) {
   return (
       <Transition in={trigger} timeout={DURATION} >
           {status => {
-            {/* console.log(status) */}
             return (
               <div style={{ 
                   ...defaultStyle,

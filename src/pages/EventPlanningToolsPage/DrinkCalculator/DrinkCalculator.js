@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from  'react';
+import React, { Fragment } from  'react';
 import { ExpansionPanel } from '../../../components/surfaces/ExpansionPanel';
 import styled from 'styled-components';
 import { mediaQuery } from '../../../styles/GlobalStyles'
@@ -22,10 +22,8 @@ import { HorizRule } from '../../../components/decorators/HorizRule';
  */
 const DrinkCalculator = (props) => {
 
-  const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */
-  const onClickHandlerForPanel1 = () => {setPanel1Closed(prevPanel1Closed => !prevPanel1Closed)}
-
-  console.log(`Inside Drink calculator ${JSON.stringify(props)}`)
+  // const [panel1Closed, setPanel1Closed] = useState(true);  /* this is Guest List Panel */
+  // const onClickHandlerForPanel1 = () => {setPanel1Closed(prevPanel1Closed => !prevPanel1Closed)}
 
   // Enter the number of guests and the number of hours for the event. If serving one type of 
   // drink (eg. wine), you can use the estimate provided. If serving more than 1 type of drink 
@@ -37,10 +35,10 @@ const DrinkCalculator = (props) => {
 
   return (
     <Fragment>
-      <ExpansionPanel text="Standard Drink Calculator" closed={panel1Closed} onClickHandler={onClickHandlerForPanel1} 
-         expandedHeight={{min: '74', max: '104'}} mt="3rem"
+      <ExpansionPanel text="Standard Drink Calculator" closed={props.closed} 
+          onClickHandler={props.onClickHandler} 
+          expandedHeight={{min: '55', max: '85'}} mt="3rem"
       >
-        <SectionHeader>Standard Drink Calculator</SectionHeader>
         <Text>
           <Guidance>
             Enter the number of guests and the number of hours for the event. If serving one type of 
@@ -63,14 +61,14 @@ const DrinkCalculator = (props) => {
 
 export default DrinkCalculator;
 
-const SectionHeader = styled.h2`
-  color: ${setColor.black};
-  padding-left: 1rem;
-  padding-top: 1rem;
-`;
+// const SectionHeader = styled.h2`
+//   color: ${setColor.black};
+//   padding-left: 1rem;
+//   padding-top: 1rem;
+// `;
 
 const Text = styled.div`
-  
+   margin-top: 1rem;
 `;
 
 const Guidance = styled.p`

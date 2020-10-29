@@ -4,10 +4,6 @@
 // ************************************************************
 
 const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
-  console.log(`>> Inside calcFoodServings`)
-  console.log(`   numGuests: ${numGuests}`)
-  console.log(`   numHours: ${numHours}`)
-  // Set rule of thumbs for appetizers
     
   //  Initialize food groups  (eg. appetizers, meals, desserts)
    let appetizerResults = [];
@@ -19,36 +15,39 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
    let mealHours = 1; 
 
    // Calculate Quantity for appetizers
-   if (foodType === "appetizers") { 
-      console.log(`Inside calcFoodServings/conditional for appetizers`)
+   if (foodType === "appetizersB4Meal") { 
       appetizerResults = dataSet[foodType] ;  // pull the appetizers array off the dataSet Object
 
-      console.log(`   ..enter forEach`)
-      // For each drink type calculate the quantity.
       appetizerResults.forEach((appetizer) => {
-
-        // console.log(`   appetizerResults[0] is ${appetizerResults[0]}`)
-        // console.log(`   appetizerResults[1] is ${appetizerResults[1]}`)
-        // console.log(`   appetizerResults[2] is ${appetizerResults[2]}`)
-        // Do calculation for an appetizer only event
-        if (appetizer[0] === "Appetizers Only") {
-          let appetizerPerPersonPerHour = 8; // rule of thumb
-          let result = appetizerPerPersonPerHour * numGuests * numHours;  // do calculation
-          console.log(` appetizers only result is ${result}`)
-          appetizer[2] = result    // update array with result
-        }
-
         // Do calculation for when serving appetizer before a meal
-        if (appetizer[0] === "Appetizers Before a Meal") {
+        if (appetizer[0] === "Appetizers before meal") {
           let appetizerPerPersonPerHour = 5; // rule of thumb
-          let result = appetizerPerPersonPerHour * numGuests * numHours;
+          let result = appetizerPerPersonPerHour * numGuests * mealHours;
           // console.log(` appetizers b4 meal result is ${result}`)
           appetizer[2] = result
         }
-
       })
       return appetizerResults;
-   };
+   } /*else  if (foodType === "appetizersOnly") { 
+    console.log(`Inside calcFoodServings/conditional for appetizersOnly`)
+    appetizerResults = dataSet[foodType] ;  // pull the appetizers array off the dataSet Object
+
+    console.log(`   ..enter forEach`)
+    // For each drink type calculate the quantity.
+    appetizerResults.forEach((appetizer) => {
+      
+      // Do calculation for when serving appetizer before a meal
+      if (appetizer[0] === "Appetizers Only") {
+        let appetizerPerPersonPerHour = 8; // rule of thumb
+        let result = appetizerPerPersonPerHour * numGuests * numHours;
+        // console.log(` appetizers b4 meal result is ${result}`)
+        appetizer[2] = result
+      }
+
+    })
+    return appetizerResults;
+  };
+*/
 
    // Calculate Quantity for Other Sides
    if (foodType === "otherSides") { 
@@ -93,7 +92,7 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
      // For each drink type calculate the quantity.
      mealResults.forEach((meal) => {
 
-        if (meal[0] === "Poultry, Meat, Fish") {
+        if (meal[0] === "Poultry, Meat, or Fish") {
           let ouncesPerPersonPerHour = 8; // rule of thumb
           let result = (ouncesPerPersonPerHour * numGuests * mealHours) / 16;  // do calculation
           meal[2] = Math.round(result)    // update array with result
@@ -158,21 +157,21 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
           meal[2] = Math.round(result)    // update array with result with result
         }
 
-        if (meal[0] === "Salad") {
-          let ouncesPerPersonPerHour = 2.5; // rule of thumb
-          let measure = numGuests < 7 ? "Ounces" : "Lbs";
-          let resultInOunces = ouncesPerPersonPerHour * numGuests * mealHours;  // do calculation
-          let resultInPounds = resultInOunces / 16;  // do calculation
-          let result = measure === "Ounces" ? resultInOunces : resultInPounds;
-          meal[1] = measure;
-          meal[2] = Math.round(result)    // update array with result with result
-        } 
+        // if (meal[0] === "Salad") {
+        //   let ouncesPerPersonPerHour = 2.5; // rule of thumb
+        //   let measure = numGuests < 7 ? "Ounces" : "Lbs";
+        //   let resultInOunces = ouncesPerPersonPerHour * numGuests * mealHours;  // do calculation
+        //   let resultInPounds = resultInOunces / 16;  // do calculation
+        //   let result = measure === "Ounces" ? resultInOunces : resultInPounds;
+        //   meal[1] = measure;
+        //   meal[2] = Math.round(result)    // update array with result with result
+        // } 
 
         if (meal[0] === "Salad Dressing") {
           let tableSpoonsPerPerson = 2 // rule of thumb
           let numberOfTablespoonsPerCup  = 16;
           let result = (tableSpoonsPerPerson * numGuests * mealHours) / numberOfTablespoonsPerCup;
-          meal[2] = result    // update array with result with result
+          meal[2] = result.toFixed(1)    // update array with result with result
         }
 
         if (meal[0] === "Baked Beans") {
@@ -237,7 +236,7 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
 
           if (dessert[0] === "Coffee/Tea") {
             let ouncesPerPerson = 8; // rule of thumb
-            let ouncesPerQuart  = 32;
+            // let ouncesPerQuart  = 32;
             // let result =  (ouncesPerPerson * numGuests * mealHours) / ouncesPerQuart;  // do calculation
             let result =  (ouncesPerPerson * numGuests * mealHours) / 8;  // do calculation
             dessert[2] = Math.round(result)    // update array with result

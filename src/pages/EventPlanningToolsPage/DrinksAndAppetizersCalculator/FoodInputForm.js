@@ -3,14 +3,28 @@ import { Formik, Form } from 'formik';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import { mediaQuery } from '../../../styles/GlobalStyles';
+// import { Button } from 'react-native-elements'
 import { Input } from '../../../components/formElements/Input';
+// import { Label } from '../../../components/formElements/Label';
 // import { Button }  from '../../../components/buttons/Button';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 import { setColor } from '../../../styles/CommonStyles';
-import DrinkResults from './DrinkResults';
-import ColumnHeading from './ColumnHeading';
+// import calcEstimatedGuests from './calcFoodServings';
+// import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
+// import foodDataSet from './foodDataSet';
+import FoodResults from './FoodResults';
 
-const DrinkInputForm = (props) => {
+const FoodInputForm = (props) => {
+
+  // Initialize 
+  // let numGuestFromGuestListCalculator = props.numGuests;
+
+  // Initial state variables
+  // const [formStatus, setFormStatus] = useState("");
+
+  // const [totalInvites, setTotalInvites] = useState(0);
+  // const [likelyToAttend, setLikelyToAttend] = useState(0);
+  // const [possibleNoShows, setPossibleNoShows] = useState(0);
 
   // Configure Input Element as Numeric Input  and set the width
   const containerStyle      = {width: '8rem', height: '9rem'};        // Set the width of the input container.
@@ -43,7 +57,6 @@ const DrinkInputForm = (props) => {
           /* Call async api to save data here; once completed, set setSubmitting(false) */
           setSubmitting(false);  /*
           /* allows you to reset form after submitting it and saving it to external store */
-          // resetForm()
         }}
         validationSchema={ validationSchema }
       > 
@@ -61,32 +74,28 @@ const DrinkInputForm = (props) => {
                 />
               </View>              
               <View>
-                <CustomLabel>Enter Number of Hours for the Event</CustomLabel>
+                <CustomLabel>Enter Number of Hours</CustomLabel>
                 <NumericInput name="numHours" placeholder="number"
                     value={values.numHours}
                     onChange={handleChange}
                     error={errors.numHours}
                 />
-              </View> 
+              </View>      
             {/*
               <ButtonContainer>
                 <Button title="Calculate" type="submit" />
               </ButtonContainer>
             */}
               <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"/>
-              <ColumnHeading />
-              <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
-
-              <DrinkResults numGuests={values.numGuests} numHours={values.numHours} />
+              <FoodResults numGuests={values.numGuests} numHours={values.numHours} />
             </Form>
         )}
       </Formik>
     </div>
-  
   );
 }
 
-export default DrinkInputForm;
+export default FoodInputForm;
 
 // ***********************************************************************************
 // Styled Components
@@ -113,16 +122,6 @@ const View = styled.div`
   height: 5rem;
 `;
 
-// const ColumnHeadings = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   /* margin-top: 1.2rem; */
-
-//   ${mediaQuery.lessThan("tablet")`
-//      margin: 0;
-//   `}
-// `;
-
 // const ResultsContainer = styled.div`
 //   display: flex;
 //   justify-content: space-between;
@@ -131,17 +130,6 @@ const View = styled.div`
 //   ${mediaQuery.lessThan("tablet")`
 //      margin: 0;
 //   `}
-// `;
-
-
-
-// const ResultLayout = styled.div`
-//   display: flex;
-//   flex-direction: column;
-
-//   /* ${mediaQuery.lessThan("tablet")`
-//     flex-direction: column;
-//   `} */
 // `;
 
 // const Result = styled.div`

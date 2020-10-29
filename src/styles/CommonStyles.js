@@ -46,7 +46,7 @@ export const setFont = {
 }
 
 export const setTextAlign = (position) => {
-   return css`text-align: ${position}`;
+   return css`text-align: ${position};`;
 }
 
 

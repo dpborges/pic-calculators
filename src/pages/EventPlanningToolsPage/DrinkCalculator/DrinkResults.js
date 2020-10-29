@@ -1,32 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { mediaQuery } from '../../../styles/GlobalStyles';
-// import { Button } from 'react-native-elements'
-import { Label } from '../../../components/formElements/Label';
-import { HorizRule } from '../../../components/decorators/HorizRule';
-import { setColor } from '../../../styles/CommonStyles';
 import calcDrinks from './calcDrinks';
-import {hasAtLeastOneNonEmptyValue}  from '../../../utils/validators/hasAtLeastOneNonEmptyValue'
 import drinkDataSet from './drinkDataSet';
+import RowLayout from './RowLayout';
 
 const DrinkResults = (props) => {
 
   const renderResults = () => {
-    let resultsJsx = [];
-    
     // pass in array of items the numGuests and the numHours; it returns and array wity the results
     let drinkResults = calcDrinks(drinkDataSet, props.numGuests, props.numHours)
 
-    let size = ''
     // console.log(`This is a row[0]: ${row[0]}`)
-    drinkResults.map(row => {
-      size = row[2] ? `(${row[2]})`  : '';
-      resultsJsx.push(
-        <ResultsContainer>
-            <TypeColumn>{row[0]}</TypeColumn>
-            <UnitColumn>{row[1]}<Size>&nbsp;{size}</Size></UnitColumn>
-            <QuantityColumn>{row[3]}</QuantityColumn>
-       </ResultsContainer>
+    let resultsJsx = drinkResults.map(row => {
+      let type = row[0];
+      let quantity = row[3];
+      let unitOfMeasure = row[1];
+      return (
+        <div key={type}>
+            <RowLayout row={[type, quantity, unitOfMeasure]} />
+       </div>
       )
     })
     return resultsJsx
@@ -35,8 +28,7 @@ const DrinkResults = (props) => {
   return (
     <div>
         {renderResults(drinkDataSet)}
-        <Note>(Note: Champagne uses a 1 hour estimate for toasting purposes)</Note>
-
+        <Note>(Note: Champagne for toasting purposes only. Hours are not factored in)</Note>
     </div>
   );
 }
@@ -48,78 +40,87 @@ export default DrinkResults;
 // ***********************************************************************************
 
 
-const ResultsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+// const ResultsContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 2rem;
 
-  ${mediaQuery.lessThan("tablet")`
-     margin: 1.5rem 0 0 0;
-  `}
-`;
+//   ${mediaQuery.lessThan("tablet")`
+//      margin: 1.5rem 0 0 0;
+//      margin-top: 3rem;
+//   `}
+// `;
 
-const TypeColumn = styled.div`
-  color: ${props => props.theme.color.text};
-  font-size: ${({ theme }) => theme.fontSize.small};
-  padding-top: 1px;
-  width: 25%;
+// const TypeColumn = styled.div`
+//   color: ${props => props.theme.color.text};
+//   font-size: ${({ theme }) => theme.fontSize.small};
+//   /* padding-top: 1px; */
+//   width: 20%;
 
-  ${mediaQuery.lessThan("tablet")`
-    font-size: ${({ theme }) => theme.fontSize.xsmall};
-    flex-direction: column;
-    width: 30%;
-  `}  
-`;
+//   ${mediaQuery.lessThan("tablet")`
+//     font-size: ${({ theme }) => theme.fontSize.xsmall};
+//     flex-direction: column;
+//     width: 20%;
+//   `}  
+// `;
 
-const UnitColumn = styled.div`
-  align-self: flex-start;
-  color: ${props => props.theme.color.text};
-  font-size: ${({ theme }) => theme.fontSize.small};
-  padding-top: 1px;
-  /* text-align: left; */
-  width: 27%;
-  margin-left: -5rem;
+// const UnitColumn = styled.div`
+//   align-self: flex-start;
+//   color: ${props => props.theme.color.text};
+//   font-size: ${({ theme }) => theme.fontSize.small};
+//   /* padding-top: 1px; */
+//   padding-right: 8px;
+//   /* text-align: left; */
+//   width: 12rem;
+//   /* margin-left: -5rem; */
 
-  ${mediaQuery.lessThan("tablet")`
-    font-size: ${({ theme }) => theme.fontSize.xsmall};
-    flex-direction: column;
-    padding-bottom: 2rem;
-    width: 30%;
-  `}  
-`;
+//   ${mediaQuery.lessThan("tablet")`
+//     font-size: ${({ theme }) => theme.fontSize.xsmall};
+//     flex-direction: column;
+//     // padding-bottom: 2rem;
+//     width: 9rem;
+//   `}  
+// `;
 
-const Size = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.small};
 
-  ${mediaQuery.lessThan("tablet")`
-    font-size: ${({ theme }) => theme.fontSize.xsmall};
-  `}  
-`;
 
-const QuantityColumn = styled.div`
-  align-self: flex-start;
-  color: ${props => props.theme.color.text};
-  font-size: ${({ theme }) => theme.fontSize.small};
-  padding-top: 1px;
-  padding-right: 5px;
-  text-align: right;
-  width: 10%;
+// const QuantityColumn = styled.div`
+//   align-self: flex-start;
+//   color: ${props => props.theme.color.text};
+//   font-size: ${({ theme }) => theme.fontSize.small};
+//   margin-right: 16rem;
+//   /* padding-top: 1px; */
+//   padding-right: 5px;
+//   text-align: right;
+//   width: 10rem;
   
 
-  ${mediaQuery.lessThan("tablet")`
-    font-size: ${({ theme }) => theme.fontSize.xsmall};
-    // flex-direction: column;
-    width: 15%;
-  `}  
-`;
+//   ${mediaQuery.lessThan("tablet")`
+//     font-size: ${({ theme }) => theme.fontSize.xsmall};
+//     // flex-direction: column;
+//     width: 5rem;
+//   `}  
+// `;
+
 
 const Note = styled.div`
+  color: ${({ theme }) => theme.color.secondary};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
-  padding-top: .5rem;
+  font-weight: ${({ theme }) => theme.fontWeight.norma};
+  margin-top: .2rem;
   width: 50%;
 
   ${mediaQuery.lessThan("tablet")`
-     width: 95%;
+    margin-top: 1rem;
+     width: 98%;
   `}  
-
 `;
+
+
+// const Size = styled.span`
+//   font-size: ${({ theme }) => theme.fontSize.small};
+
+//   ${mediaQuery.lessThan("tablet")`
+//     font-size: ${({ theme }) => theme.fontSize.xsmall};
+//   `}  
+// `;

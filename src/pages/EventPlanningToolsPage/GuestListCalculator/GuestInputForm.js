@@ -80,7 +80,7 @@ const GuestInputForm = (props) => {
             turn becomes a children prop to Formik component. That being said, Formik passes down the values and the
             various callbacks */}
         {({ values, errors, handleSubmit, handleChange }) => (
-            <Form autocomplete="false">
+            <Form autoComplete="false">
               <FormErrorMsg>{formStatus}</FormErrorMsg>
               <View>
                 <CustomLabel>Enter Number of Local Guests</CustomLabel>
@@ -88,7 +88,7 @@ const GuestInputForm = (props) => {
                     value={values.localguests}
                     onChange={handleChange}
                     error={errors.localguests}
-                    autocomplete="false"
+                    autoComplete="false"
                     type="text"
                 />
               </View>              
@@ -149,6 +149,7 @@ export default GuestInputForm;
 const CustomLabel = styled.div`
   font-size: 1.9rem;
   /* margin-top: -2.1rem; */
+  padding-bottom: 1rem;
   width: 60%;
 
   ${mediaQuery.lessThan("tablet")`
@@ -161,10 +162,14 @@ const View = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-left: 1rem;
-  padding-top: 1rem;
   padding-right: 1rem;
+  /* padding-top: .5rem; */
   width: 100%;
-  height: 8rem;
+  height: 5rem;
+
+  ${mediaQuery.lessThan("tablet")`
+      height: 6rem;
+  `}
 `;
 
 const ResultsContainer = styled.div`

@@ -24,8 +24,6 @@ import { Label } from './Label';
  */
 export const Input = (props) => {
 
-  console.log(`Inside Input/This is autocomplete : ${props.autocomplete}`)
-  
   // Apply any style overrides caller may have provided via props
   const inputContainerStyle = props.inputContainerStyle ? props.inputContainerStyle : {};
   const containerStyle      = props.containerStyle ? props.containerStyle : {};
