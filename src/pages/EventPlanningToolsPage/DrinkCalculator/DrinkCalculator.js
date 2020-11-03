@@ -37,17 +37,16 @@ const DrinkCalculator = (props) => {
     <Fragment>
       <ExpansionPanel text="Standard Drink Calculator" closed={props.closed} 
           onClickHandler={props.onClickHandler} 
-          expandedHeight={{min: '55', max: '85'}} mt="3rem"
+          expandedHeight={{min: '57', max: '91'}} mt="3rem"
       >
         <Text>
           <Guidance>
-            Enter the number of guests and the number of hours for the event. If serving one type of 
-            drink (eg. wine), you can use the provided estimate. If serving more than one type of drink 
-            (eg. beer alcohol, and wine), you may need to lower the estimates, based on the number of 
-            people that will be drinking wine, vs beer or alcohol. If you have have an idea of the 
-            number of wine drinkers, for example, enter this number instead of entering total number of guests.
-            Use this quantity for your wine. Do the same for the alcohol and beer drinkers. 
-            This will give you the best results.
+            Enter the number of guests and the number of hours for the event. Note estimated quantity for each drink 
+            type will be based on total number of guests provided. If serving one type of drink, the estimate
+            covers all your guests. 
+            If serving more than one type of drink (eg. beer alcohol, and wine), consider lowering estimates
+            based on guest preferences. For example, if you know there are few beer drinkers, consider  
+            reducing the estimate accordingly. 
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />

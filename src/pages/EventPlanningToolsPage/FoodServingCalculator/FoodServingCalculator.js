@@ -7,15 +7,6 @@ import { setColor } from '../../../styles/CommonStyles';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 
 /**
- * TODOS
- * 1. (DONE) Render form  GuestListCalculatorForm that uses Formik with react native elements
- * 2. (DONE) Once form is rendered, see if I can create a numeric input component from React Native Elements Text field
- *    and yup so I can reuse as a numeric input going forward.
- * 3. Once step 1 and 2 are completed, pass down a callback to the form that gets passed the from data when the form is 
- *    successfully submitted
- */
-
-/**
  * The GuestListCalculator makes use of the ExpansionPanel to be able to collapse and expand 
  * the panel to show the content. The content you would like to display must be child of the
  * Expansion panel component.
@@ -26,16 +17,13 @@ const FoodServingCalculator = (props) => {
     <Fragment>
       <ExpansionPanel text="Food Serving Calculator" closed={props.closed} 
          onClickHandler={props.onClickHandler}  
-         expandedHeight={{min: '122', max: '180'}} mt="3rem"
+         expandedHeight={{min: '118', max: '160'}} mt="3rem"
       >
         <Text>
           <Guidance>
-            Enter the number of guests and the number of hours for the event. If serving one type of 
-            drink (eg. wine), you can use the estimate provided. If serving more than 1 type of drink 
-            (eg. beer alcohol, and wine), you may need to lower the estimates, based on guest preferences. 
-            If you know your guests, you can enter the number of wine drinkers for example, instead of 
-            entering all guests, and use this for your wine estimate. Then do the same for the alcohol 
-            and beer drinkers. This will give you the best results.
+            Enter the number of guests that will attending the event. Scan below to get an idea 
+            of quantity of food you'll need based on what you will be serving.
+            Keep in mind that the more options you have, the less you'll need of each. 
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />

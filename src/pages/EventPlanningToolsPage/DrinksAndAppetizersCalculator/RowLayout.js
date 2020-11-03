@@ -68,6 +68,10 @@ const QuantityColumn = styled.div`
      padding-right: 3px;
      width: 15%;
   `}
+
+   @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-right: 11%;
+   }
 `;
 
 const QuantityContent = styled.div`

@@ -5,11 +5,11 @@
 const calcDrinks = (dataSet, numGuests, numHours) => {
 
     // Set rule of thumbs for alcoholic beverages
-    const numDrinksPer750mlBottle   = 15;
+    const numDrinksPer750mlBottle   = 16;
 
     // Set rule of thumbs for wine
     const numGlassesPersonPerHour = 1.2;
-    const numGlassesPerBottle     = 5;
+    const numGlassesPerBottle     = 4;
 
     // Set rule of thumbs for beer
     const amountExtraBeerForFirstHourPerPerson = .5;
@@ -27,7 +27,7 @@ const calcDrinks = (dataSet, numGuests, numHours) => {
    // For each drink type calculate the quantity.
    drinkResults.forEach((drinkType) => {
      if (drinkType[0] === "Alcoholic Beverage") {
-          drinkType[3] = Math.round((numGuests * numHours) / numDrinksPer750mlBottle);
+          drinkType[3] = Math.ceil((numGuests * numHours) / numDrinksPer750mlBottle);
        }
        if (drinkType[0] === "Wine") {
           drinkType[3] = Math.round((numGlassesPersonPerHour * numGuests * numHours) / numGlassesPerBottle);

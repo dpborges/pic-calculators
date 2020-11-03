@@ -11,10 +11,10 @@ import { mediaQuery } from '../../styles/GlobalStyles'
 */
 export const Button  = (props) => {
 
-  // Apply any style overrides caller may have provided via props
+  // Apply any style overrides caller may have provided via props, otherwise set default
   const containerStyle   = props.containerStyle ? props.containerStyle : {};
-  const buttonStyle      = props.buttonStyle ? props.buttonStyle : {};
-  const titleStyle      = props.titleStyle ? props.titleStyle : {};
+  const buttonStyle      = props.buttonStyle ? props.buttonStyle : { width: '10rem'  };
+  const titleStyle       = props.titleStyle ? props.titleStyle : {};
   const onclickHandler   = props.onclickHandler ? props.onclickHandler : () => "" ;
   // const type            = props.onclickHandler ? props.onclickHandler : () => "" ;
   
@@ -67,6 +67,7 @@ const StyledButton = styled.button`
   padding: 0 14px;
   outline: none;
   transition: all 500ms;
+  width: ${props => props.buttonStyle.width};
 
   &:focus { outline: none; };
 

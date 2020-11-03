@@ -14,21 +14,8 @@ const foodTypes =  {
     ["Fruit/Veggie Platter",      "Platter",     "2"],
     ["Dips",                      "Ounces",      "16"],
     ["Chips",                     "16 ounce bag", "2"],
-    ["Canapes",                   "Canape",     "30"]
-  ],
-
-  meal: [
-    ["Poultry, Meat, Fish",       "Lbs",          "5"],
-    ["Boneless Beef Roast",       "Lbs",          "5"],
-    ["Pork Roast or Ham",         "Lbs",          "5"],
-    ["Casseroles",                "13x9 dish",    "2"],
-    ["Rice and Grains",           "Ounces",      "30"],
-    ["Vegetables",                "Ounces",      "30"],
-    ["Salad",                     "Ounces",      "20"],
-    ["Salad Dressing",            "Cups",        "20"],
-    ["Potato Salad",              "Cup (8oz)",   "20"],
-    ["Baked Beans",               "Cup (8oz)",   "10"],
-    ["Rolls or Bread",            "Bread/rolls", "40"],
+    ["Canapes",                   "Canape",     "30"],
+    ["Cheese",                    "Lbs",     "30"],
   ],
 
   dessert: [

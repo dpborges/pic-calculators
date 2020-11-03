@@ -28,7 +28,7 @@ const foodTypes =  {
     ["Boneless Beef Roast",       "Lbs",          "5"],
     ["Pork Roast or Ham",         "Lbs",          "5"],
     ["Casseroles",                "13x9 dish",    "2"],
-    ["Rice and Grains",           "Ounces",      "30"],
+    ["Rice or Grains",           "Ounces",      "30"],
     ["Vegetables",                "Ounces",      "30"],
     ["Salad",                     "Ounces",      "20"],
     ["Salad Dressing",            "Cups",        "20"],

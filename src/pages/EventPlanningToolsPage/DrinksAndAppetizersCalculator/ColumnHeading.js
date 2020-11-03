@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 import { mediaQuery } from '../../../styles/GlobalStyles';
 
 // Return column heading
-function ColumnHeading() {
+function ColumnHeading(props) {
+
+  let col1Text = props.c1text ? props.c1text : "Type of Food";
 
   return (
     <ColumnHeadingsContainer>
-      <Heading>Type of Drink</Heading>
+      <Heading>{col1Text}</Heading>
       <Heading ta="center">Quantity</Heading>
       <Heading ta="right" pr="4rem">Unit of Measure </Heading>
     </ColumnHeadingsContainer>

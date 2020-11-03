@@ -14,9 +14,9 @@ const calcEstimatedGuests = (numLocalGuests, numOutOfTownGuests, numOutOfStateGu
     totalInvites = parseInt(numLocalGuests) + parseInt(numOutOfTownGuests) + parseInt(numOutOfStateGuests);
     
     // Calculate number of guests likely to attend
-    let lgLikelyToAttend   = parseInt(numLocalGuests) * .80;
-    let ootgLikelyToAttend = parseInt(numOutOfTownGuests) * .60;
-    let oosgLikelyToAttend = parseInt(numOutOfStateGuests) * .50;
+    let lgLikelyToAttend   = parseInt(numLocalGuests) * .85;
+    let ootgLikelyToAttend = parseInt(numOutOfTownGuests) * .70;
+    let oosgLikelyToAttend = parseInt(numOutOfStateGuests) * .55;
 
     likelyToAttend = Math.round(lgLikelyToAttend + ootgLikelyToAttend + oosgLikelyToAttend);
 

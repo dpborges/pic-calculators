@@ -17,6 +17,7 @@ export const theme = {
         surface:    "#f2f4f4",   // grey used for background surfaces (eg. forms , separate page sections)
         surfaceAlt: "#e1e9f0",   // light blue used for background surfaces (eg. used to alternate surface colors)
         lightgreen: "#6BB950",
+        lightblue:  "#6BB9F0",
         white:      "#ffffff"
     },
     fontFamily: {

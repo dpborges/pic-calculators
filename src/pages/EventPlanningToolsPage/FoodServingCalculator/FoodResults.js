@@ -20,15 +20,13 @@ const FoodResults = (props) => {
   const renderResults = (forFoodGroup) => {
     // pass in array of items the numGuests and the numHours; it returns and array wity the results
 
-    let size = ''
     // console.log(`This is a row[0]: ${row[0]}`)
     let resultsJsx = forFoodGroup.map(row => {
-      size = row[2] ? `${row[2]}`  : '';
       return (
         <ResultsContainer key={row[0]}>
             <TypeColumn>{row[0]}</TypeColumn>
             <QuantityColumn>{row[2]}</QuantityColumn>
-            <UnitColumn>{row[1]}<Size>&nbsp;{size}</Size></UnitColumn>
+            <UnitColumn>{row[1]}</UnitColumn>
         </ResultsContainer>
       )
     })
@@ -42,7 +40,7 @@ const FoodResults = (props) => {
      {/* 
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
      */}
-      <ColumnHeading />
+      <ColumnHeading c1text="Type of Food"/>
       {/* <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/> */}
       {renderResults(appetizerResults)}
 
@@ -63,7 +61,8 @@ const FoodResults = (props) => {
       </Note>
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
 */}
-      <ColumnHeading />
+
+      <ColumnHeading /> 
       {renderResults(mealResults)}
 
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem" mt="5rem"/>
@@ -167,13 +166,13 @@ const QuantityColumn = styled.div`
   `}  
 `;
 
-const Size = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.small};
+// const Size = styled.span`
+//   font-size: ${({ theme }) => theme.fontSize.small};
 
-  ${mediaQuery.lessThan("tablet")`
-    font-size: ${({ theme }) => theme.fontSize.xsmall};
-  `}  
-`;
+//   ${mediaQuery.lessThan("tablet")`
+//     font-size: ${({ theme }) => theme.fontSize.xsmall};
+//   `}  
+// `;
 
 // const Note = styled.div`
 //   /* font-size: ${({ theme }) => theme.fontSize.xsmall}; */

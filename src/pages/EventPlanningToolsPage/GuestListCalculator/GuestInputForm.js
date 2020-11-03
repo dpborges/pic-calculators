@@ -24,7 +24,7 @@ const GuestInputForm = (props) => {
   const [possibleNoShows, setPossibleNoShows] = useState(0);
 
   // Configure Input Element as Numeric Input  and set the width
-  const containerStyle      = {width: '8rem', height: '9rem'};        // Set the width of the input container.
+  const containerStyle      = {width: '10rem', height: '9rem'};        // Set the width of the input container.
   const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
 
   const NumericInput = ( (props) => {
@@ -41,9 +41,9 @@ const GuestInputForm = (props) => {
 
   // Define validation schema
   const validationSchema = yup.object({
-    localguests: yup.number().integer().min(0, "invalid entry").notRequired("* is required").typeError("Not a number"),
-    outOfTownGuests: yup.number().integer().min(0, "invalid entry").notRequired().typeError("Not a number"),
-    outOfStateGuests: yup.number().integer().min(0, "invalid entry").notRequired().typeError("Not a number")
+    localguests: yup.number().integer("Not an Integer").min(0, "invalid entry").notRequired("* is required").typeError("Not a number"),
+    outOfTownGuests: yup.number().integer("Not an Integer").min(0, "invalid entry").notRequired().typeError("Not a number"),
+    outOfStateGuests: yup.number().integer("Not an Integer").min(0, "invalid entry").notRequired().typeError("Not a number")
   })
 
   return (
@@ -56,7 +56,7 @@ const GuestInputForm = (props) => {
           let oosg = data.outOfStateGuests === "" ? 0 : data.outOfStateGuests;
 
           // Set form error if at least one value was not entered. 
-          let hasOneInput = hasAtLeastOneNonEmptyValue([lg,  ootg, oosg], 0);
+          let hasOneInput = hasAtLeastOneNonEmptyValue([lg,  ootg, oosg], "0");
           hasOneInput ? setFormStatus("") : setFormStatus("At least one value required");
 
           // Calculate the guest estimates
@@ -84,7 +84,7 @@ const GuestInputForm = (props) => {
               <FormErrorMsg>{formStatus}</FormErrorMsg>
               <View>
                 <CustomLabel>Enter Number of Local Guests</CustomLabel>
-                <NumericInput name="localguests" placeholder="number"
+                <NumericInput name="localguests" placeholder="number" errorStyle={{width: '9rem'}}
                     value={values.localguests}
                     onChange={handleChange}
                     error={errors.localguests}
@@ -98,7 +98,7 @@ const GuestInputForm = (props) => {
                     value={values.outOfTownGuests}
                     onChange={handleChange}
                     error={errors.outOfTownGuests}
-                    autocomplete="false"
+                    autoComplete="false"
                 />
               </View> 
               <View>
@@ -107,7 +107,7 @@ const GuestInputForm = (props) => {
                     value={values.outOfStateGuests}
                     onChange={handleChange}
                     error={errors.outOfStateGuests}
-                    autocomplete="off"
+                    autoComplete="off"
                 />
               </View>
 
@@ -165,7 +165,7 @@ const View = styled.div`
   padding-right: 1rem;
   /* padding-top: .5rem; */
   width: 100%;
-  height: 5rem;
+  height: 6rem;
 
   ${mediaQuery.lessThan("tablet")`
       height: 6rem;
@@ -205,20 +205,25 @@ const Result = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  /* border?: 1px solid red; */
   margin-top: 1rem;
-  margin-right: .6rem; 
+  margin-right: 1%;
   display: flex; 
   justify-content: flex-end;
 
   ${mediaQuery.lessThan("tablet")`
-     margin-right: 1.5rem; 
+     margin-right: 1rem; 
   `}  
 `;
 
 const FormErrorMsg = styled.div`
   color: red;
   font-size: 1.5rem;
-  text-align: center;
+  text-align: right;
   padding: 0;
   margin: .2rem 0 1rem 0;
+  text-transform: capitalize;
+  ${mediaQuery.lessThan("tablet")`
+     text-align: center;
+  `}  
 `;

@@ -27,7 +27,7 @@ const FoodInputForm = (props) => {
   // const [possibleNoShows, setPossibleNoShows] = useState(0);
 
   // Configure Input Element as Numeric Input  and set the width
-  const containerStyle      = {width: '8rem', height: '9rem'};        // Set the width of the input container.
+  const containerStyle      = {width: '10rem', height: '9rem'};        // Set the width of the input container.
   const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
 
   const NumericInput = ( (props) => {
@@ -41,13 +41,12 @@ const FoodInputForm = (props) => {
 
   // Define validation schema
   const validationSchema = yup.object({
-    numGuests: yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
-    numHours:  yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
+    numGuests: yup.number().integer("Not an Integer").min(1, "* Enter number").required("* is required").typeError("Not a number"),
   })
 
   return (
     <div>
-      <Formik initialValues={{ numGuests: "", numHours: ""}} onSubmit={(data, {setSubmitting, setErrors, resetForm} ) => {
+      <Formik initialValues={{ numGuests: ""}} onSubmit={(data, {setSubmitting, setErrors, resetForm} ) => {
           
           // Ensure empty strings are convert to 0 on input.
           // let ng = data.numGuests      === "" ? 0 : data.numGuests;
@@ -95,9 +94,8 @@ export default FoodInputForm;
 
 const CustomLabel = styled.div`
   font-size: 1.9rem;
-  margin-top: -2.1rem;
+  margin-top: -1.1rem;
   width: 60%;
-  font-weight: 600;
 
   ${mediaQuery.lessThan("tablet")`
       font-size: 1.50rem;
@@ -108,6 +106,7 @@ const View = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1.8rem;
   padding-left: 1rem;
   padding-top: 1rem;
   padding-right: 1rem;

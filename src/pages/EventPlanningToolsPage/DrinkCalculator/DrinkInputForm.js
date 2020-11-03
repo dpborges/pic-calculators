@@ -13,7 +13,7 @@ import ColumnHeading from './ColumnHeading';
 const DrinkInputForm = (props) => {
 
   // Configure Input Element as Numeric Input  and set the width
-  const containerStyle      = {width: '8rem', height: '9rem'};        // Set the width of the input container.
+  const containerStyle      = {width: '10rem', height: '9rem'};        // Set the width of the input container.
   const inputContainerStyle = {textAlign: 'center'};   // Text-align right Input for use with numeric data
 
   const NumericInput = ( (props) => {
@@ -27,8 +27,8 @@ const DrinkInputForm = (props) => {
 
   // Define validation schema
   const validationSchema = yup.object({
-    numGuests: yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
-    numHours:  yup.number().integer().min(1, "* Enter number").required("* is required").typeError("Not a number"),
+    numGuests: yup.number().integer("Not an Integer").min(1, "* Enter number").required("* is required").typeError("Not a number"),
+    numHours:  yup.number().integer("Not an Integer").min(1, "* Enter number").required("* is required").typeError("Not a number"),
   })
 
   return (
@@ -110,7 +110,7 @@ const View = styled.div`
   padding-top: 1rem;
   padding-right: 1rem;
   width: 100%;
-  height: 5rem;
+  height: 6rem;
 `;
 
 // const ColumnHeadings = styled.div`

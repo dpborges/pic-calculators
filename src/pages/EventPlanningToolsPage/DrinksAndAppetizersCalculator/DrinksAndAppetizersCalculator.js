@@ -30,12 +30,11 @@ const DrinksAndAppetizersCalculator = (props) => {
       >
         <Text>
           <Guidance>
-            Enter the number of guests and the number of hours for the event. If serving one type of 
-            drink (eg. wine), you can use the estimate provided. If serving more than 1 type of drink 
-            (eg. beer alcohol, and wine), you may need to lower the estimates, based on guest preferences. 
-            If you know your guests, you can enter the number of wine drinkers for example, instead of 
-            entering all guests, and use this for your wine estimate. Then do the same for the alcohol 
-            and beer drinkers. This will give you the best results.
+            Enter the number of guests and the number of hours for the event. The estimates provided 
+            are intended for a 'drinks and appetizer only' event. As a result, 
+            appetizer estimates are higher than they would be if served before a meal. In addition to your
+            basic appetizers (eg shrimp cocktail, poppers, kabobs, meatballs, etc), we listed other sides
+            you may consider as well.
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />

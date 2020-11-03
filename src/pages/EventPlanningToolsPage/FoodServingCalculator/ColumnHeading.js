@@ -4,11 +4,11 @@ import { mediaQuery } from '../../../styles/GlobalStyles';
 
 
 // Return column heading
-function ColumnHeading() {
+function ColumnHeading(props) {
 
   return (
     <ColumnHeadingsContainer>
-      <Heading>Type of Drink</Heading>
+      <Heading>Type of Food</Heading>
       <Heading ta="center">Quantity</Heading>
       <Heading ta="right" pr="2rem">Unit of Measure </Heading>
     </ColumnHeadingsContainer>

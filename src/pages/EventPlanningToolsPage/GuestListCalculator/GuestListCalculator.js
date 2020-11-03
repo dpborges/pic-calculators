@@ -7,34 +7,26 @@ import { setColor } from '../../../styles/CommonStyles';
 import { HorizRule } from '../../../components/decorators/HorizRule';
 
 /**
- * TODOS
- * 1. (DONE) Render form  GuestListCalculatorForm that uses Formik with react native elements
- * 2. (DONE) Once form is rendered, see if I can create a numeric input component from React Native Elements Text field
- *    and yup so I can reuse as a numeric input going forward.
- * 3. Once step 1 and 2 are completed, pass down a callback to the form that gets passed the from data when the form is 
- *    successfully submitted
- */
-
-/**
  * The GuestListCalculator makes use of the ExpansionPanel to be able to collapse and expand 
- * the panel to show the content. The content you would like to display must be child of the
- * Expansion panel component.
- * <SectionHeader>Guest List Calculator</SectionHeader>
+ * the panel to show the content. The content you display must be child of the Expansion panel component.
  */
 const GuestListCalculator = (props) => {
 
+  // Event Planner use This count can in turn be used for food and drink estimates. 
   return (
     <Fragment>
       <ExpansionPanel text="Guest List Calculator" closed={props.closed} 
                 onClickHandler={props.onClickHandler} mt="3rem"
-                expandedHeight={{min: '45', max: '65'}}
+                expandedHeight={{min: '50', max: '70'}}
       >
         <Text>
           <Guidance>
-            When sending out invites keep in mind that everyone may not be able to attend  
-            your event for various reasons (eg. other commitments, long distance travel,  previous engagement,  
-            illness, etc). This tool attempts to estimate guest attendance based on whether invitees are local, out of town,
-            or out of state guests. Many Event planners use this count for food and drink estimates.
+            When sending out invites, keep in mind that everyone may not be able to attend  
+            your event for various reasons (eg. long distance travel). This tool estimates guests 
+            likely to attend based on whether invitees are local, out of town, or out of state guests. 
+            You can use this count as part of your event action plan, for estimating food and drinks. If want to 
+            know exactly who would be attending, consider using a <BlogLink href="https://pitchinclub.com"> free app </BlogLink> 
+            that has an event rsvp tracker.
           </Guidance>
         </Text>
         <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mt="2rem"  />
@@ -49,6 +41,7 @@ const GuestListCalculator = (props) => {
 
 export default GuestListCalculator;
 
+// That was used as <SectionHeader>some text</SectionHeader> which i decided to remove
 // const SectionHeader = styled.h2`
 //   color: ${setColor.black};
 //   padding-left: 1rem;
@@ -73,4 +66,17 @@ const Guidance = styled.p`
   `}
 
 `;
+
+const BlogLink = styled.a`
+  text-decoration: none;
+  color: ${props => props.theme.color.primary};
+  font-weight: ${props => props.theme.fontWeight.normal};
+  transition: color .5s;
+
+  &:hover  {
+    color: ${props => props.theme.color.lightblue};
+  }
+
+`;
+
 

@@ -40,7 +40,7 @@ const FoodResults = (props) => {
     <div>
       <SubSectionHeader>Appetizers</SubSectionHeader>
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
-      <ColumnHeading />
+      <ColumnHeading  c1text="Type of Food" />
       {renderResults(appetizerResults)}
 
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem" mt="2rem"/>
@@ -51,6 +51,7 @@ const FoodResults = (props) => {
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem" mt="2rem"/>
       <SubSectionHeader>Drinks</SubSectionHeader>
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem"/>
+      <ColumnHeading  c1text="Type of Drink" />
       <DrinkResults numGuests={props.numGuests} numHours={props.numHours} />
 
       <HorizRule color={setColor.lightgrey} pctWidth="100%" thickness="1px" mb="1rem" mt="5rem"/>

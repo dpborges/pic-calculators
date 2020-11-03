@@ -116,7 +116,7 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
           meal[2] = Math.round(result)    // update array with result
         }
 
-        if (meal[0] === "Rice and Grains") {
+        if (meal[0] === "Rice or Grains") {
           let ouncesPerPersonPerHour = 1.5; // rule of thumb
           let measure = numGuests < 10 ? "Ounces" : "Lbs";
           let resultInOunces = ouncesPerPersonPerHour * numGuests * mealHours;  // do calculation

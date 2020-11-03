@@ -58,6 +58,13 @@ const calcFoodServings = (dataSet, foodType,  numGuests, numHours) => {
           let result = (piecesPerPersonPerHour * numGuests) * numHours;  // do calculation
           side[2] = Math.round(result)   // update array with result
         }
+
+        if (side[0] === "Cheese") {
+          let poundsPerPersonPerHour = .25; // rule of thumb
+          let result = (poundsPerPersonPerHour * numGuests) * numHours;  // do calculation
+          side[2] = Math.round(result)   // update array with result
+        }
+
     })
     return otherSideResults; 
    };
