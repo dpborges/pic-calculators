@@ -22,8 +22,8 @@ const GuestListCalculator = (props) => {
         <Text>
           <Guidance>
             When sending out invites, keep in mind that everyone may not be able to attend  
-            your event for various reasons (eg. long distance travel). This tool estimates guests 
-            likely to attend based on whether invitees are local, out of town, or out of state guests. 
+            your event for various reasons. This tool estimates guests likely to attend based on 
+            whether invitees are local, out of town, or out of state guests. 
             You can use this count as part of your event action plan, for estimating food and drinks. If want to 
             know exactly who would be attending, consider using a <BlogLink href="https://pitchinclub.com"> free app </BlogLink> 
             that has an event rsvp tracker.
@@ -36,7 +36,6 @@ const GuestListCalculator = (props) => {
       </ExpansionPanel>
     </Fragment>
   )
-
 }
 
 export default GuestListCalculator;
